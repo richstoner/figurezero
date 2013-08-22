@@ -1,0 +1,4530 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+<style>
+
+    html
+    {
+      overflow: hidden;
+    }
+
+</style>
+
+{% end %}
+
+{% block js %}
+  
+  <script type="text/javascript">
+
+      // $(function() {
+      //     $(".content").height(window.innerHeight - 120);
+      // });
+
+      // $('#myTab a').click(function (e) {
+      //     e.preventDefault();
+      //     $(this).tab('show');
+      // });
+
+      // $(window).resize(function() {
+      //   $(".content").height(window.innerHeight - 120);
+      // });
+
+  </script>
+
+  <link rel='stylesheet' type='text/css' href='http://www.x3dom.org/x3dom/release/x3dom.css'></link>
+  <script type='text/javascript' src='http://www.x3dom.org/x3dom/release/x3dom.js'></script>
+
+{% end %}
+
+{% block content %}
+  
+
+    <div id="todoapp">
+      <div class="content">
+
+      <x3d id='x3dElement' showStat='false' showLog='false' style='width:100%;height:75%;'>
+      <scene DEF='scene'>
+        <viewpoint description='viewpoint1' orientation='0.19 0.45 0.87 2.45' position='9 9 9' fieldOfView='0.785'></viewpoint>
+        <background skyColor='1 1 1'></background>
+        <transform rotation='0 0.70711 0.70711 3.14159' scale='0.56 0.56 0.56' translation='2.8 0 0'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <text string='" time "'>
+              <fontStyle family='"SANS"' justify='"MIDDLE"'></fontStyle>
+            </text>
+          </shape>
+        </transform>
+        <transform rotation='0.57735 0.57735 0.57735 2.0944' scale='0.56 0.56 0.56' translation='0 2.8 0'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <text string='" x "'>
+              <fontStyle family='"SANS"' justify='"MIDDLE"'></fontStyle>
+            </text>
+          </shape>
+        </transform>
+        <transform rotation='0.28108 0.6786 0.6786 2.59356' scale='0.56 0.56 0.56' translation='0 0 2.8'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <text string='" y "'>
+              <fontStyle family='"SANS"' justify='"MIDDLE"'></fontStyle>
+            </text>
+          </shape>
+        </transform>
+        <transform rotation='0 0 1 1.5708' translation='1 0 0'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <cylinder radius='0.04'></cylinder>
+          </shape>
+        </transform>
+        <transform translation='0 1 0'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <cylinder radius='0.04'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='1 0 0 1.5708' translation='0 0 1'>
+          <shape>
+            <appearance>
+              <material diffuseColor='0 0 1'></material>
+            </appearance>
+            <cylinder radius='0.04'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.523172 0 -0.188493 2.55192' translation='0.0055092 1.5841 0.0571834'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0584554' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.51674 0 -0.30593 2.49745' translation='0.0165359 1.54539 0.0325728'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0360702' radius='0.00979219'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.347299 0 -0.926128 1.71854' translation='0.0275626 1.5301 0.0211874'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0118973' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0870905 0 -0.995771 1.54156' translation='0.0385892 1.52938 0.019604'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110818' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0951549 0 -0.870382 1.06661' translation='0.0496242 1.53261 0.0206898'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0126783' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0557043 0 -0.969074 1.32802' translation='0.0606508 1.53703 0.0216096'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.01137' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.0716775 1.5384 0.0219263'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.334981 0 -0.801066 2.08986' translation='0.0827125 1.53498 0.0196191'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0137753' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.133574 0 -0.903679 1.1518' translation='0.0937391 1.53405 0.0181262'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0121928' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.104766 1.53653 0.0189405'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.077711 0 -0.980446 1.389' translation='0.115801 1.53755 0.0193778'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011255' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.409535 0 -0.912293 1.56912' translation='0.126827 1.53857 0.0222882'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0120777' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0136636 0 -0.999846 1.55979' translation='0.137854 1.53864 0.0248368'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110366' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0626061 0 -0.995928 1.50588' translation='0.148889 1.53906 0.025259'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110801' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.267378 0 -0.849407 2.04316' translation='0.159916 1.53647 0.0238716'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0129719' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0162333 0 -0.98991 1.42956' translation='0.170942 1.53431 0.0222279'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111474' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.218608 0 -0.975418 1.54305' translation='0.181977 1.53525 0.0210818'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011313' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.360845 0 -0.808762 2.05379' translation='0.193004 1.53224 0.0173872'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0136238' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.204031 1.52908 0.0149292'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0245815 0 -0.999319 1.5983' translation='0.215066 1.52893 0.0150649'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110425' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.162048 0 -0.986689 1.5572' translation='0.226092 1.52885 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011167' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.627221 0 -0.608721 1.06346' translation='0.237119 1.53333 0.0226954'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0181281' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.436903 0 -0.898057 1.6219' translation='0.248154 1.53742 0.0256963'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0122876' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0599021 0 -0.994733 1.65406' translation='0.259181 1.53665 0.0233438'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110767' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.509837 0 -0.855685 1.65962' translation='0.270207 1.53561 0.0203882'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.012896' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.281242 1.53504 0.0171007'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.040748 0 -0.992436 1.45473' translation='0.292269 1.53568 0.0168745'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111024' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.303296 1.53633 0.0166483'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.00546251 0 -0.999312 1.53412' translation='0.314331 1.53653 0.0166785'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110425' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.325357 1.53673 0.0167086'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.160942 0 -0.981422 1.67543' translation='0.336384 1.53614 0.0176134'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112438' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.347419 1.53556 0.0185182'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.190427 0 -0.979846 1.63115' translation='0.358446 1.53522 0.0174476'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011245' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.369472 1.53488 0.0163769'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0490553 0 -0.997132 1.51313' translation='0.380507 1.5352 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110667' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.154061 0 -0.987428 1.60619' translation='0.391534 1.53532 0.0166936'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111587' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.40256 1.53512 0.0175531'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.101542 0 -0.977691 1.38587' translation='0.413595 1.53616 0.0181262'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112867' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.227414 0 -0.966064 1.6936' translation='0.424622 1.5365 0.0174023'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114055' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.435649 1.5358 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.446684 1.5358 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0518783 0 -0.997516 1.61847' translation='0.45771 1.53554 0.0158189'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110458' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.468737 1.53527 0.0155324'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.479772 1.53527 0.0155324'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.289806 0 -0.95383 1.49184' translation='0.490799 1.53573 0.0172063'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0115517' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.501825 1.53618 0.0188802'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.182483 0 -0.981867 1.62216' translation='0.51286 1.5359 0.0178547'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112387' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.523887 1.53561 0.0168293'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.534914 1.53561 0.0168293'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.545949 1.53561 0.0168293'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0437338 0 -0.998584 1.60108' translation='0.556975 1.53544 0.0170706'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011034' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.568002 1.53527 0.0173118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.579037 1.53527 0.0173118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.590064 1.53527 0.0173118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.60109 1.53527 0.0173118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.612125 1.53527 0.0173118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.100635 0 -0.993655 1.62103' translation='0.623152 1.53499 0.0167539'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110888' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.634179 1.53472 0.0161959'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.645213 1.53472 0.0161959'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0519041 0 -0.998012 1.53503' translation='0.65624 1.53491 0.0164824'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110404' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.667267 1.53511 0.016769'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.678302 1.53511 0.016769'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.689328 1.53511 0.016769'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0490855 0 -0.997745 1.61658' translation='0.700355 1.53486 0.0164975'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110599' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.71139 1.53461 0.0162261'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.10075 0 -0.99479 1.58634' translation='0.722417 1.53452 0.0156681'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110761' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.733443 1.53443 0.0151102'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.744478 1.53443 0.0151102'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.119109 0 -0.988961 1.48254' translation='0.755505 1.53492 0.0157737'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111414' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.766532 1.53542 0.0164372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.777567 1.53542 0.0164372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.788593 1.53542 0.0164372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.79962 1.53542 0.0164372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.810655 1.53542 0.0164372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0762192 0 -0.994475 1.64304' translation='0.821682 1.53502 0.016015'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110796' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.832708 1.53462 0.0155927'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0409125 0 -0.997939 1.62025' translation='0.843743 1.53434 0.0153665'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110577' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.85477 1.53407 0.0151403'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.865797 1.53407 0.0151403'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.876832 1.53407 0.0151403'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.887858 1.53407 0.0151403'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.032517 0 -0.991442 1.44403' translation='0.898885 1.53477 0.0149594'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111302' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.90992 1.53548 0.0147784'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.920947 1.53548 0.0147784'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.931973 1.53548 0.0147784'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.943008 1.53548 0.0147784'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.119567 0 -0.992766 1.58174' translation='0.954035 1.53542 0.0154419'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110987' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.965062 1.53535 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.976096 1.53535 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='0.987123 1.53535 0.0161054'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00270827 0 -0.990904 1.70575' translation='0.99815 1.53461 0.0160904'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111362' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0781908 0 -0.986498 1.4264' translation='1.00918 1.53466 0.0165126'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011186' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.02021 1.53547 0.0169499'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.03124 1.53547 0.0169499'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0789371 0 -0.995914 1.61467' translation='1.04227 1.53522 0.0165126'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110802' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0296104 0 -0.983421 1.75067' translation='1.0533 1.53398 0.0162412'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112042' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00262888 0 -0.961854 1.29371' translation='1.06433 1.53454 0.016392'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114726' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.107163 0 -0.980224 1.73794' translation='1.07536 1.53518 0.0157737'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112576' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.08639 1.53424 0.0151705'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0627096 0 -0.997575 1.54059' translation='1.09741 1.53441 0.0148236'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110618' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.10845 1.53457 0.0144768'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.148604 0 -0.987084 1.63069' translation='1.11948 1.53424 0.0153062'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111626' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.1305 1.53391 0.0161356'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.137242 0 -0.984589 1.46219' translation='1.14154 1.53451 0.0153665'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112077' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.218998 0 -0.975692 1.57886' translation='1.15256 1.53508 0.015834'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112929' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.16359 1.53503 0.0170706'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.143354 0 -0.98963 1.56172' translation='1.17463 1.53508 0.0162713'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111506' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.18565 1.53513 0.0154721'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.19668 1.53513 0.0154721'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0623378 0 -0.991659 1.68385' translation='1.20771 1.5345 0.0158189'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111278' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.21874 1.53388 0.0161658'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.118616 0 -0.964428 1.3323' translation='1.22977 1.53523 0.0154872'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011442' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.108662 0 -0.969691 1.79143' translation='1.2408 1.53533 0.0154268'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113799' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.25183 1.53409 0.0160451'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.26286 1.53409 0.0160451'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0436561 0 -0.998306 1.60927' translation='1.27389 1.53388 0.0158038'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110537' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0761933 0 -0.994137 1.49399' translation='1.28492 1.53409 0.0159848'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110834' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.29594 1.53451 0.016407'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0816129 0 -0.995351 1.62196' translation='1.30698 1.53423 0.0159546'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110865' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.31801 1.53395 0.0155022'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.054238 0 -0.992231 1.683' translation='1.32903 1.53332 0.0152006'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111214' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.459231 0 -0.875122 1.41766' translation='1.34007 1.53366 0.0177944'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0126096' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.130168 0 -0.990719 1.53164' translation='1.35109 1.53484 0.0199659'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111216' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.208476 0 -0.953466 1.79036' translation='1.36212 1.5338 0.0180357'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0115735' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.37316 1.53254 0.0168293'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.187473 0 -0.964645 1.38448' translation='1.38418 1.5336 0.0179'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114222' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0543012 0 -0.993387 1.46946' translation='1.39521 1.53522 0.018669'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111084' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.40624 1.53578 0.0183674'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0534553 0 -0.976446 1.78139' translation='1.41727 1.5346 0.0180658'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112842' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.4283 1.53342 0.0177642'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.43933 1.53342 0.0177642'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.11907 0 -0.988638 1.66267' translation='1.45036 1.53291 0.0184278'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011145' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.333551 0 -0.931601 1.42585' translation='1.46139 1.53325 0.0210668'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0118451' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.47242 1.53411 0.0230422'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.124651 0 -0.989976 1.50435' translation='1.48345 1.53448 0.0223486'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.01113' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.49447 1.53485 0.0216549'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0109253 0 -0.999333 1.60564' translation='1.50551 1.53466 0.0215946'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110423' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.51654 1.53446 0.0215342'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0299327 0 -0.995617 1.48208' translation='1.52756 1.53495 0.0217001'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110835' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.5386 1.53545 0.021866'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.54962 1.53545 0.021866'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.56065 1.53545 0.021866'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0680669 0 -0.996173 1.62566' translation='1.57169 1.53514 0.021489'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110773' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.58271 1.53484 0.021112'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.057229 0 -0.997093 1.52046' translation='1.59374 1.53512 0.0214287'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110671' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.60477 1.53539 0.0217454'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.105496 0 -0.988231 1.45979' translation='1.6158 1.53601 0.0211572'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111496' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.62683 1.53663 0.0205691'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.63786 1.53663 0.0205691'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0572824 0 -0.996527 1.63126' translation='1.64889 1.5363 0.0208858'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110568' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.65992 1.53596 0.0212025'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.67095 1.53596 0.0212025'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0895808 0 -0.991719 1.66296' translation='1.68198 1.53545 0.0217001'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111104' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.693 1.53494 0.0221978'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.70404 1.53494 0.0221978'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.249049 0 -0.967932 1.53789' translation='1.71507 1.53513 0.0207802'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113835' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.72609 1.53531 0.0193627'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.73713 1.53531 0.0193627'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.124894 0 -0.991908 1.59358' translation='1.74815 1.53519 0.0200564'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111083' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.75918 1.53506 0.0207501'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.129986 0 -0.990815 1.60807' translation='1.77022 1.53485 0.0214739'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111372' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.78124 1.53465 0.0221978'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.79227 1.53465 0.0221978'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.11672 0 -0.993154 1.56624' translation='1.8033 1.53467 0.0215493'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011111' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.81433 1.5347 0.0209009'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0678968 0 -0.993684 1.48134' translation='1.82536 1.53519 0.0205239'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111051' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.83639 1.53569 0.0201469'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0761486 0 -0.993553 1.65488' translation='1.84742 1.53522 0.0197246'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110899' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.85845 1.53476 0.0193024'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.187681 0 -0.980982 1.62031' translation='1.86948 1.53448 0.0182468'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112489' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00543921 0 -0.993558 1.45736' translation='1.88051 1.53483 0.017161'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110898' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.89153 1.53546 0.0171309'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.347614 0 -0.935185 1.50297' translation='1.90257 1.53586 0.0191818'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0117998' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='1.9136 1.53626 0.0212326'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.169556 0 -0.984719 1.61056' translation='1.92462 1.53603 0.0202826'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112062' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.962163 0 -0.272474 1.57105' translation='1.93566 1.5358 0.0388159'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0404991' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.370359 0 -0.122336 2.74092' translation='1.94668 1.49433 0.0749778'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0900665' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.106652 0 -0.260146 0.285002' translation='1.95771 1.47322 0.0939182'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0424183' radius='0.00966431'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.371708 0 -0.0427003 0.383483' translation='1.96875 1.6134 0.14421'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.156863'></material>
+            </appearance>
+            <cylinder height='0.258428' radius='0.016771'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.284395 0 -0.0360634 2.85084' translation='1.97977 1.58688 0.235685'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.305529' radius='0.0147248'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0531411 0 -0.030098 0.0611106' translation='1.9908 1.6235 0.288872'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.366634' radius='0.0140306'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.595949 0 -0.0248174 2.5025' translation='2.00183 1.62803 0.166121'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.576471 0'></material>
+            </appearance>
+            <cylinder height='0.444645' radius='0.045362'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0721692 0 -0.0448396 3.05653' translation='2.01286 1.32717 0.0424954'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.588235 0'></material>
+            </appearance>
+            <cylinder height='0.245729' radius='0.0445947'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0992507 0 -0.0621813 0.11739' translation='2.02389 1.29287 0.0425558'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.177464' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0553974 0 -0.176251 0.185819' translation='2.03492 1.41175 0.0320148'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.890196 0'></material>
+            </appearance>
+            <cylinder height='0.0626094' radius='0.0265631'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0849321 0 -0.044581 3.04552' translation='2.04595 1.31951 0.0407763'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.909804 0'></material>
+            </appearance>
+            <cylinder height='0.247155' radius='0.0252478'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.063634 0 -0.217593 2.9129' translation='2.05698 1.17181 0.0528856'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.890196 0'></material>
+            </appearance>
+            <cylinder height='0.0507138' radius='0.026691'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.111663 0 -0.0434168 0.120095' translation='2.06801 1.27328 0.0403088'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.835294 0'></material>
+            </appearance>
+            <cylinder height='0.254163' radius='0.0299246'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.545399 0 -0.202697 2.5206' translation='2.07904 1.37734 0.0409422'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.94902 0'></material>
+            </appearance>
+            <cylinder height='0.0543589' radius='0.0231286'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.353121 0 -0.0947908 2.76729' translation='2.09006 1.30106 0.0352118'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.909804 0'></material>
+            </appearance>
+            <cylinder height='0.116414' radius='0.0252478'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0198448 0 -0.0567252 0.0601325' translation='2.1011 1.34397 0.016588'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.194534' radius='0.0154373'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0359755 0 -0.0397069 0.0536062' translation='2.11213 1.57961 0.0235097'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.277493' radius='0.0144873'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0588379 0 -0.0508927 3.06372' translation='2.12315 1.61007 0.0221224'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.216828' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0936689 0 -0.0456955 3.03718' translation='2.13419 1.3819 0.0270535'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.137255'></material>
+            </appearance>
+            <cylinder height='0.241489' radius='0.0172277'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0570927 0 -0.257503 2.87468' translation='2.14521 1.24118 0.037142'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0427894' radius='0.0124047'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.432695 0 -0.132926 0.469738' translation='2.15624 1.25755 0.0179603'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0830159' radius='0.0114364'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.23157 0 -0.067404 0.243582' translation='2.16728 1.374 0.0189556'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.163713' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.231198 0 -0.0562717 0.240252' translation='2.1783 1.54854 0.0605462'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.929412 0'></material>
+            </appearance>
+            <cylinder height='0.195807' radius='0.0242064'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.328241 0 -0.0766413 0.343803' translation='2.18933 1.7114 0.106812'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.960784 0'></material>
+            </appearance>
+            <cylinder height='0.143982' radius='0.0224161'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.405969 0 -0.0513965 2.72001' translation='2.20036 1.68123 0.0868608'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.105882'></material>
+            </appearance>
+            <cylinder height='0.214702' radius='0.0178488'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.00312486 0 -0.126846 3.01437' translation='2.21139 1.5402 0.0434153'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0868646' radius='0.00880566'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.186203 0 -0.153788 2.89768' translation='2.22242 1.4623 0.0502315'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0717544' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.622009 0 -0.0635168 2.46615' translation='2.23345 1.35969 0.110944'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.173733' radius='0.0112172'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.538879 0 -0.256341 2.50216' translation='2.24448 1.27465 0.153394'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0429834' radius='0.0102306'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.536233 0 -0.057217 0.569579' translation='2.25551 1.33862 0.090103'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.180392'></material>
+            </appearance>
+            <cylinder height='0.192861' radius='0.0162594'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.156167 0 -0.0511536 0.165081' translation='2.26654 1.52622 0.055238'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.137255'></material>
+            </appearance>
+            <cylinder height='0.215722' radius='0.0171546'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.868035 0 -0.0486158 2.08762' translation='2.27757 1.57662 0.170449'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.226643' radius='0.0145969'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0758128 0 -0.0417119 3.05495' translation='2.28859 1.38884 0.278844'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.643137 0'></material>
+            </appearance>
+            <cylinder height='0.264552' radius='0.0413976'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.68888 0 -0.224042 0.810159' translation='2.29963 1.27404 0.271907'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0492538' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.172415 0 -0.0743668 0.188891' translation='2.31065 1.36378 0.267715'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.148163' radius='0.00805663'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.760126 0 -0.361658 1.00057' translation='2.32168 1.44478 0.268891'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0305121' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0324244 0 -0.0853486 3.05017' translation='2.33272 1.38864 0.255199'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.129293' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.223245 0 -0.0776009 2.90299' translation='2.34374 1.25528 0.268952'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.141988' radius='0.0145239'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.331643 0 -0.0765562 2.79429' translation='2.35477 1.11853 0.308703'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.144142' radius='0.0112354'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0864198 0 -0.0566654 3.03807' translation='2.3658 0.953917 0.341019'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.194739' radius='0.012021'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.151697 0 -0.0645166 2.97599' translation='2.37683 0.772845 0.33648'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.170784' radius='0.0155835'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0549055 0 -0.0371328 3.07526' translation='2.38786 0.540361 0.315368'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.933333 0'></material>
+            </appearance>
+            <cylinder height='0.297176' radius='0.0239141'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.204349 0 -0.0411261 2.93161' translation='2.39889 0.260887 0.334625'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.843137 0'></material>
+            </appearance>
+            <cylinder height='0.268319' radius='0.0294314'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.941249 0 -0.0478192 1.91167' translation='2.40992 0.0911585 0.470481'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.230418' radius='0.0142133'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.995685 0 -0.0819575 1.52725' translation='2.42095 0.0555738 0.645952'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0313726'></material>
+            </appearance>
+            <cylinder height='0.134642' radius='0.0192555'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.5817 0 -0.0325332 0.621935' translation='2.43198 0.196343 0.614329'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.945098 0'></material>
+            </appearance>
+            <cylinder height='0.33919' radius='0.0232747'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.326293 0 -0.0399213 0.334954' translation='2.44301 0.464514 0.470647'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.164706'></material>
+            </appearance>
+            <cylinder height='0.276003' radius='0.0165517'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.274338 0 -0.0423701 0.281285' translation='2.45403 0.719949 0.389893'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.870588 0'></material>
+            </appearance>
+            <cylinder height='0.260442' radius='0.0277689'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0895011 0 -0.0429184 0.0994232' translation='2.46507 0.972975 0.365675'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.839216 0'></material>
+            </appearance>
+            <cylinder height='0.257115' radius='0.0295593'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.235908 0 -0.0693917 0.24845' translation='2.4761 1.17785 0.39591'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0705882'></material>
+            </appearance>
+            <cylinder height='0.158786' radius='0.0185065'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.545504 0 -0.0666853 0.581843' translation='2.48712 1.32393 0.369505'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.165478' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.199819 0 -0.0670734 0.212369' translation='2.49816 1.47347 0.307934'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.164706'></material>
+            </appearance>
+            <cylinder height='0.164521' radius='0.01657'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.17385 0 -0.0606619 0.185186' translation='2.50918 1.64315 0.307285'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.164706'></material>
+            </appearance>
+            <cylinder height='0.181636' radius='0.0166796'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.569083 0 -0.145708 2.5137' translation='2.52021 1.70177 0.344623'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0757335' radius='0.0109979'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.215444 0 -0.0502722 2.91851' translation='2.53125 1.56409 0.342527'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.219504' radius='0.0144508'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.274181 0 -0.0460115 2.85987' translation='2.54227 1.34204 0.351711'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.239471' radius='0.0128614'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.250692 0 -0.0609863 2.88064' translation='2.5533 1.13962 0.36186'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.976471 0'></material>
+            </appearance>
+            <cylinder height='0.180941' radius='0.0214295'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.373224 0 -0.0374843 2.75709' translation='2.56433 0.915766 0.394116'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.94902 0'></material>
+            </appearance>
+            <cylinder height='0.294389' radius='0.0231103'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.127323 0 -0.0296464 3.01049' translation='2.57536 0.595084 0.425392'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.870588 0'></material>
+            </appearance>
+            <cylinder height='0.37166' radius='0.0277872'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.324168 0 -0.036416 2.8093' translation='2.58639 0.267624 0.352616'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.741176 0'></material>
+            </appearance>
+            <cylinder height='0.303025' radius='0.0356063'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.981605 0 -0.0307966 1.76035' translation='2.59742 0.0906422 0.479363'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.358317' radius='0.0135921'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.541343 0 -0.0360631 0.573462' translation='2.60845 0.185212 0.572527'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.305532' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.259731 0 -0.042311 0.266291' translation='2.61948 0.439347 0.455959'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.811765 0'></material>
+            </appearance>
+            <cylinder height='0.260806' radius='0.0311304'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.192458 0 -0.0300412 0.196042' translation='2.63051 0.745299 0.457437'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.760784 0'></material>
+            </appearance>
+            <cylinder height='0.367327' radius='0.0343457'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.062069 0 -0.0332003 0.0704487' translation='2.64154 1.09097 0.503084'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.866667 0'></material>
+            </appearance>
+            <cylinder height='0.331877' radius='0.0279516'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.192327 0 -0.0398013 0.197688' translation='2.65256 1.39242 0.486722'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.764706 0'></material>
+            </appearance>
+            <cylinder height='0.277251' radius='0.0341631'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0235511 0 -0.0586183 0.0632146' translation='2.6636 1.62229 0.462277'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.188251' radius='0.0157844'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.730992 0 -0.0535286 2.31895' translation='2.67463 1.64621 0.539728'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.205841' radius='0.00842201'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.404307 0 -0.0409319 2.72311' translation='2.68565 1.45303 0.560463'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.137255'></material>
+            </appearance>
+            <cylinder height='0.269593' radius='0.0172642'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.5588 0 -0.0842414 0.600572' translation='2.69669 1.3839 0.469365'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.130992' radius='0.009847'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.358366 0 -0.0595643 0.371788' translation='2.70771 1.52411 0.39962'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.835294 0'></material>
+            </appearance>
+            <cylinder height='0.184983' radius='0.0299246'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0307907 0 -0.0699733 3.06507' translation='2.71874 1.53166 0.364046'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.157702' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.578166 0 -0.0598414 2.52132' translation='2.72978 1.37801 0.308311'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.94902 0'></material>
+            </appearance>
+            <cylinder height='0.184403' radius='0.0229641'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.34932 0 -0.0706241 0.364399' translation='2.7408 1.37587 0.227753'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.156015' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.332342 0 -0.058686 0.344242' translation='2.75183 1.53726 0.231749'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.972549 0'></material>
+            </appearance>
+            <cylinder height='0.188034' radius='0.0216488'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.148966 0 -0.0722863 0.166345' translation='2.76286 1.70103 0.251625'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.152656' radius='0.0143777'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.720376 0 -0.159597 2.31172' translation='2.77389 1.75301 0.265121'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0690387' radius='0.013172'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.321538 0 -0.0577537 2.8088' translation='2.78492 1.63942 0.25927'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.191069' radius='0.015145'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.457921 0 -0.110957 2.65097' translation='2.79595 1.50526 0.205782'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0994529' radius='0.0143046'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.477687 0 -0.0827473 0.506135' translation='2.80698 1.51963 0.214815'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.133157' radius='0.00865951'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.819781 0 -0.076321 0.967247' translation='2.81801 1.61889 0.305883'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.144586' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.930041 0 -0.0450588 1.19751' translation='2.82904 1.70458 0.479031'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.244901' radius='0.0125325'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.761345 0 -0.0269623 2.27547' translation='2.84007 1.61688 0.748481'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.960784 0'></material>
+            </appearance>
+            <cylinder height='0.408659' radius='0.0224161'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.783749 0 -0.034877 2.23966' translation='2.85109 1.38642 0.780058'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.72549 0'></material>
+            </appearance>
+            <cylinder height='0.316396' radius='0.0363005'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.33721 0 -0.0539714 0.348515' translation='2.86213 1.3844 0.690543'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.204459' radius='0.0102124'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.797298 0 -0.0452717 0.924936' translation='2.87316 1.55373 0.627991'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.243384' radius='0.0104316'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.921332 0 -0.0628678 1.17704' translation='2.88418 1.66064 0.450108'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.175526' radius='0.0115643'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.146189 0 -0.0724766 2.97769' translation='2.89522 1.61921 0.380378'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.152255' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.980974 0 -0.137048 1.43286' translation='2.90624 1.54963 0.430941'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.080398' radius='0.0103768'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.739666 0 -0.0350238 2.30779' translation='2.91727 1.44928 0.586899'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.31507' radius='0.0080749'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.197688 0 -0.0509725 2.93599' translation='2.92831 1.23745 0.72482'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.870588 0'></material>
+            </appearance>
+            <cylinder height='0.216488' radius='0.0277506'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.15189 0 -0.301577 0.344437' translation='2.93933 1.14868 0.748993'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.036536' radius='0.0138662'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.122176 0 -0.0384697 0.128442' translation='2.95036 1.30811 0.769291'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.827451 0'></material>
+            </appearance>
+            <cylinder height='0.286848' radius='0.0305092'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.207998 0 -0.0364999 0.212778' translation='2.96139 1.59811 0.755372'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.180392'></material>
+            </appearance>
+            <cylinder height='0.302328' radius='0.0163873'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.74373 0 -0.0263385 2.30226' translation='2.97242 1.60615 0.568365'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.847059 0'></material>
+            </appearance>
+            <cylinder height='0.418338' radius='0.0291391'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.487365 0 -0.0495601 2.62964' translation='2.98345 1.36938 0.358542'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.145098'></material>
+            </appearance>
+            <cylinder height='0.222658' radius='0.017045'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0374438 0 -0.0617115 3.06935' translation='2.99448 1.18315 0.307632'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.178815' radius='0.01467'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.113775 0 -0.0342668 3.02249' translation='3.00551 0.934338 0.329272'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.164706'></material>
+            </appearance>
+            <cylinder height='0.321548' radius='0.0166065'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.121781 0 -0.0326426 3.01518' translation='3.01654 0.607025 0.32698'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.831373 0'></material>
+            </appearance>
+            <cylinder height='0.338054' radius='0.0300525'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.308887 0 -0.033837 2.82563' translation='3.02757 0.284358 0.356763'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.839216 0'></material>
+            </appearance>
+            <cylinder height='0.32612' radius='0.0296871'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.772972 0 -0.0538401 2.25512' translation='3.0386 0.0646851 0.486224'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0627451'></material>
+            </appearance>
+            <cylinder height='0.204651' radius='0.0186161'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.996359 0 -0.0225419 1.48848' translation='3.04962 0.0201258 0.809193'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.48953' radius='0.0103585'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.561591 0 -0.0441692 0.598405' translation='3.06066 0.143462 0.982914'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.831373 0'></material>
+            </appearance>
+            <cylinder height='0.249834' radius='0.030016'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0540364 0 -0.0407035 0.067703' translation='3.07169 0.381713 0.905448'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.878431 0'></material>
+            </appearance>
+            <cylinder height='0.270699' radius='0.0273852'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.243557 0 -0.029488 0.247866' translation='3.08271 0.698143 0.852563'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.815686 0'></material>
+            </appearance>
+            <cylinder height='0.374218' radius='0.0310939'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.107188 0 -0.0281333 0.111046' translation='3.09375 1.07444 0.78597'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.847059 0'></material>
+            </appearance>
+            <cylinder height='0.392238' radius='0.0292121'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.267695 0 -0.0264246 0.272351' translation='3.10477 1.47016 0.709137'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.588235 0'></material>
+            </appearance>
+            <cylinder height='0.416975' radius='0.0445216'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.36651 0 -0.0352243 0.377071' translation='3.1158 1.81659 0.595916'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.772549 0'></material>
+            </appearance>
+            <cylinder height='0.313276' radius='0.0335419'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.26381 0 -0.309368 0.418704' translation='3.12684 1.97852 0.543212'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.121569'></material>
+            </appearance>
+            <cylinder height='0.0356693' radius='0.0174834'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.772824 0 -0.0529018 2.25546' translation='3.13786 1.92896 0.467435'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.20828' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.782661 0 -0.0540302 2.23967' translation='3.14889 1.79977 0.307029'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.137255'></material>
+            </appearance>
+            <cylinder height='0.204237' radius='0.0172642'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.158182 0 -0.0454283 2.97626' translation='3.15992 1.61665 0.246317'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.996078 0'></material>
+            </appearance>
+            <cylinder height='0.242909' radius='0.0203517'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.163846 0 -0.0501326 2.9694' translation='3.17095 1.38859 0.247523'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.219785' radius='0.0148527'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.478456 0 -0.20668 2.59335' translation='3.18198 1.25754 0.216745'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0533916' radius='0.0125325'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.182604 0 -0.0411652 0.188297' translation='3.19301 1.36642 0.228447'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.996078 0'></material>
+            </appearance>
+            <cylinder height='0.268065' radius='0.0202603'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.485801 0 -0.0551861 0.510858' translation='3.20404 1.58516 0.301419'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0117647'></material>
+            </appearance>
+            <cylinder height='0.199659' radius='0.0196392'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.203911 0 -0.0452163 0.210413' translation='3.21507 1.79158 0.374798'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0392157'></material>
+            </appearance>
+            <cylinder height='0.244048' radius='0.0191642'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0929081 0 -0.248126 0.268152' translation='3.2261 1.93235 0.401746'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.172549'></material>
+            </appearance>
+            <cylinder height='0.0444732' radius='0.0165335'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.375819 0 -0.079226 2.74738' translation='3.23713 1.88959 0.377679'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.139076' radius='0.0139941'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0119623 0 -0.0521042 3.08811' translation='3.24815 1.71965 0.352812'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.211786' radius='0.0143594'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.267251 0 -0.046585 2.86687' translation='3.25919 1.49991 0.322425'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.913725 0'></material>
+            </appearance>
+            <cylinder height='0.236878' radius='0.0250834'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0465644 0 -0.0380569 3.08142' translation='3.27022 1.24141 0.297513'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.752941 0'></material>
+            </appearance>
+            <cylinder height='0.289524' radius='0.0348755'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0994851 0 -0.0344693 3.03611' translation='3.28124 0.937729 0.320179'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.784314 0'></material>
+            </appearance>
+            <cylinder height='0.320138' radius='0.0329573'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00130086 0 -0.0297475 3.11181' translation='3.29228 0.593155 0.335862'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.807843 0'></material>
+            </appearance>
+            <cylinder height='0.370954' radius='0.0314592'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.132374 0 -0.0466799 3.00076' translation='3.3033 0.290908 0.319998'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.854902 0'></material>
+            </appearance>
+            <cylinder height='0.236042' radius='0.0286458'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.113161 0 -0.0575044 0.127277' translation='3.31433 0.269229 0.315232'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.191897' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.116213 0 -0.0469834 0.125682' translation='3.32537 0.480909 0.339737'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.921569 0'></material>
+            </appearance>
+            <cylinder height='0.234869' radius='0.0247545'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.129153 0 -0.036295 0.134561' translation='3.33639 0.747835 0.372989'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.905882 0'></material>
+            </appearance>
+            <cylinder height='0.303579' radius='0.0255766'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.072124 0 -0.0344951 0.080034' translation='3.34742 1.05769 0.404129'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.847059 0'></material>
+            </appearance>
+            <cylinder height='0.319899' radius='0.0292852'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.308895 0 -0.0422815 0.31706' translation='3.35845 1.34112 0.375356'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.260988' radius='0.0133181'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.325518 0 -0.0376098 0.333851' translation='3.36948 1.6035 0.287364'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0627451'></material>
+            </appearance>
+            <cylinder height='0.292966' radius='0.018744'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.181141 0 -0.0549553 0.190443' translation='3.38051 1.84048 0.257868'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.921569 0'></material>
+            </appearance>
+            <cylinder height='0.200799' radius='0.0246997'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.764515 0 -0.172242 0.900564' translation='3.39154 1.95896 0.251565'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0640666' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.963095 0 -0.210059 1.7399' translation='3.40257 1.97445 0.252334'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0524538' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.793483 0 -0.0700579 2.21999' translation='3.4136 1.92242 0.215101'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.157512' radius='0.00957296'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.538338 0 -0.0639089 2.56864' translation='3.42463 1.80226 0.199086'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.172667' radius='0.0108518'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.748586 0 -0.0795237 2.28929' translation='3.43566 1.68412 0.297423'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.138555' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.344734 0 -0.0724893 2.78159' translation='3.44668 1.56728 0.323044'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0392157'></material>
+            </appearance>
+            <cylinder height='0.152229' radius='0.0191825'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0696637 0 -0.066724 3.04498' translation='3.45772 1.41374 0.302565'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.165382' radius='0.0111441'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.38528 0 -0.0449266 2.74325' translation='3.46875 1.21841 0.355571'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.188235'></material>
+            </appearance>
+            <cylinder height='0.245253' radius='0.0161133'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.243428 0 -0.0773137 2.88332' translation='3.47977 1.03638 0.420189'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.14273' radius='0.0140306'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.089268 0 -0.0382452 3.04432' translation='3.49081 0.823803 0.424683'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.94902 0'></material>
+            </appearance>
+            <cylinder height='0.288532' radius='0.023092'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.20874 0 -0.0706104 2.91941' translation='3.50183 0.604114 0.428091'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.984314 0'></material>
+            </appearance>
+            <cylinder height='0.156045' radius='0.0208267'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.58952 0 -0.0402789 0.632167' translation='3.51286 0.63852 0.525131'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.273963' radius='0.0102855'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.166757 0 -0.041876 0.172794' translation='3.5239 0.878825 0.627856'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.8 0'></material>
+            </appearance>
+            <cylinder height='0.263515' radius='0.0320438'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0402842 0 -0.046573 0.0616171' translation='3.53492 1.12669 0.654593'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.909804 0'></material>
+            </appearance>
+            <cylinder height='0.236583' radius='0.0252478'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00646266 0 -0.0328411 0.0334772' translation='3.54595 1.41267 0.658272'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.952941 0'></material>
+            </appearance>
+            <cylinder height='0.33601' radius='0.0227997'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.736682 0 -0.0329589 0.829242' translation='3.55698 1.69365 0.533862'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.941176 0'></material>
+            </appearance>
+            <cylinder height='0.33481' radius='0.023567'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.229874 0 -0.0629066 0.240642' translation='3.56801 1.89177 0.43067'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.815686 0'></material>
+            </appearance>
+            <cylinder height='0.175155' radius='0.0310573'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.95356 0 -0.0398184 1.87398' translation='3.57904 1.93546 0.582932'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.917647 0'></material>
+            </appearance>
+            <cylinder height='0.277132' radius='0.0249555'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.865478 0 -0.0247257 2.09478' translation='3.59007 1.78244 0.521934'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0901961'></material>
+            </appearance>
+            <cylinder height='0.446295' radius='0.0181594'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.126968 0 -0.0456999 3.00624' translation='3.6011 1.55134 0.313498'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.984314 0'></material>
+            </appearance>
+            <cylinder height='0.241103' radius='0.0211007'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.398336 0 -0.0326559 2.73043' translation='3.61213 1.27701 0.365494'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.886275 0'></material>
+            </appearance>
+            <cylinder height='0.337916' radius='0.0267276'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.393701 0 -0.0420209 2.7345' translation='3.62316 1.00156 0.48449'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.145098'></material>
+            </appearance>
+            <cylinder height='0.262606' radius='0.0170998'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.180123 0 -0.0305357 2.95787' translation='3.63419 0.70361 0.568682'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.776471 0'></material>
+            </appearance>
+            <cylinder height='0.360836' radius='0.0333592'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0593656 0 -0.0339917 3.07313' translation='3.64521 0.36429 0.591543'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.752941 0'></material>
+            </appearance>
+            <cylinder height='0.324637' radius='0.034839'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.994228 0 -0.0278259 1.46699' translation='3.65625 0.222898 0.779048'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.396571' radius='0.0107787'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.241854 0 -0.0289127 0.246052' translation='3.66728 0.428251 0.930104'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.839216 0'></material>
+            </appearance>
+            <cylinder height='0.381093' radius='0.0295775'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.44931 0 -0.0300922 0.46712' translation='3.6783 0.776768 0.801638'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0313726'></material>
+            </appearance>
+            <cylinder height='0.366705' radius='0.0192007'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.540214 0 -0.0268332 0.571483' translation='3.68934 1.11343 0.608176'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.92549 0'></material>
+            </appearance>
+            <cylinder height='0.411242' radius='0.0244622'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.564532 0 -0.0367305 0.601313' translation='3.70036 1.41005 0.412423'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.898039 0'></material>
+            </appearance>
+            <cylinder height='0.29998' radius='0.0261978'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.279582 0 -0.0430528 0.286793' translation='3.71139 1.65666 0.291919'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.913725 0'></material>
+            </appearance>
+            <cylinder height='0.256312' radius='0.0252112'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.589141 0 -0.0569799 0.633401' translation='3.72242 1.85763 0.199041'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.941176 0'></material>
+            </appearance>
+            <cylinder height='0.193664' radius='0.0235305'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.795543 0 -0.254721 2.15286' translation='3.73345 1.92378 0.1592'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0432567' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.510993 0 -0.716331 2.06592' translation='3.74448 1.90823 0.17247'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0154048' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.409864 0 -0.255036 0.503774' translation='3.75551 1.92352 0.177401'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0432682' radius='0.00845855'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.962159 0 -0.223605 1.41443' translation='3.76654 1.9463 0.209974'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0492762' radius='0.00878739'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0813544 0 -0.100222 3.01215' translation='3.77757 1.89555 0.229201'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.110105' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0371401 0 -0.0471834 3.08151' translation='3.7886 1.72423 0.220379'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.233874' radius='0.0130623'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0334145 0 -0.0797867 3.05498' translation='3.79963 1.53872 0.218343'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.138098' radius='0.0146517'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.415452 0 -0.122486 2.69363' translation='3.81065 1.42932 0.239365'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0900911' radius='0.00875086'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0701134 0 -0.0745729 3.03906' translation='3.82169 1.31512 0.252892'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.147975' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.113324 0 -0.0624447 3.01184' translation='3.83272 1.15404 0.257702'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.17645' radius='0.0154739'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.35309 0 -0.0513061 2.77675' translation='3.84374 0.966096 0.305672'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.215081' radius='0.0139027'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.316005 0 -0.037933 2.81769' translation='3.85478 0.727744 0.389607'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.94902 0'></material>
+            </appearance>
+            <cylinder height='0.290906' radius='0.0231468'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0193237 0 -0.0341041 3.10238' translation='3.8658 0.428438 0.432449'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.811765 0'></material>
+            </appearance>
+            <cylinder height='0.323082' radius='0.0313862'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.146294 0 -0.111513 2.95659' translation='3.87683 0.218388 0.422089'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.811765 0'></material>
+            </appearance>
+            <cylinder height='0.0989567' radius='0.0311121'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0867273 0 -0.0367692 0.0943396' translation='3.88787 0.319143 0.427865'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.917647 0'></material>
+            </appearance>
+            <cylinder height='0.300114' radius='0.0250468'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0520436 0 -0.0360098 0.0633293' translation='3.89889 0.621218 0.432917'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.898039 0'></material>
+            </appearance>
+            <cylinder height='0.305983' radius='0.0261795'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0713148 0 -0.0347439 0.0794114' translation='3.90992 0.932207 0.436279'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.866667 0'></material>
+            </appearance>
+            <cylinder height='0.317608' radius='0.0280247'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.414373 0 -0.0423612 0.429628' translation='3.92095 1.20892 0.393633'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.792157 0'></material>
+            </appearance>
+            <cylinder height='0.260496' radius='0.0324823'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.123035 0 -0.0523875 0.134125' translation='3.93198 1.43155 0.326723'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.156863'></material>
+            </appearance>
+            <cylinder height='0.210325' radius='0.0167161'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.220395 0 -0.0427561 0.226434' translation='3.94301 1.66152 0.285344'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0470588'></material>
+            </appearance>
+            <cylinder height='0.25809' radius='0.0189267'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.731933 0 -0.0508159 0.823745' translation='3.95404 1.86105 0.177431'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.858824 0'></material>
+            </appearance>
+            <cylinder height='0.217155' radius='0.0283535'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.996277 0 -0.0584224 1.63423' translation='3.96507 1.92885 0.191908'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.188599' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.85768 0 -0.107469 2.09766' translation='3.9761 1.89705 0.32989'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.102681' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.365277 0 -0.0781566 2.75876' translation='3.98713 1.80575 0.39971'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.14119' radius='0.0118018'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.99801 0 -0.0350784 1.51837' translation='3.99816 1.7485 0.582239'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.314108' radius='0.00836721'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.9347 0 -0.0295403 1.93286' translation='4.00918 1.69057 0.913561'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.373555' radius='0.0160402'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0408543 0 -0.0543556 3.07354' translation='4.02022 1.52314 1.084'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.996078 0'></material>
+            </appearance>
+            <cylinder height='0.203014' radius='0.0201142'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.79232 0 -0.0502447 2.22438' translation='4.03125 1.3552 1.16672'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.156863'></material>
+            </appearance>
+            <cylinder height='0.219295' radius='0.0166979'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.781402 0 -0.0363786 0.898267' translation='4.04227 1.38301 1.37211'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.303336' radius='0.0158027'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.690224 0 -0.0761578 2.37399' translation='4.05331 1.42537 1.54063'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.144896' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.814431 0 -0.0313461 2.1888' translation='4.06433 1.2714 1.73378'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.351507' radius='0.0155835'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.33801 0 -0.051832 2.79259' translation='4.07536 1.06953 1.9129'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0980392'></material>
+            </appearance>
+            <cylinder height='0.212899' radius='0.0179219'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.136139 0 -0.0389753 2.99951' translation='4.0864 0.829366 1.96815'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.172549'></material>
+            </appearance>
+            <cylinder height='0.283127' radius='0.0164969'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.333893 0 -0.292522 0.459955' translation='4.09742 0.706105 1.99371'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.886275 0'></material>
+            </appearance>
+            <cylinder height='0.0376669' radius='0.0267824'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.462499 0 -0.0279378 0.481763' translation='4.10845 0.897994 1.90866'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.713726 0'></material>
+            </appearance>
+            <cylinder height='0.394983' radius='0.0371774'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.541094 0 -0.0270829 0.572544' translation='4.11948 1.24424 1.70709'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.858824 0'></material>
+            </appearance>
+            <cylinder height='0.407451' radius='0.028591'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.570939 0 -0.02834 0.608506' translation='4.13051 1.57498 1.48586'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.8 0'></material>
+            </appearance>
+            <cylinder height='0.388794' radius='0.0321169'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.548572 0 -0.0347192 0.581968' translation='4.14154 1.86724 1.2877'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.890196 0'></material>
+            </appearance>
+            <cylinder height='0.317834' radius='0.0266362'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.665595 0 -0.744735 1.61932' translation='4.15257 1.99964 1.19559'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0148173' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.324065 0 -0.115167 2.7905' translation='4.1636 1.95436 1.17515'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0956736' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.252465 0 -0.0796309 2.87367' translation='4.17463 1.84263 1.14216'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.138576' radius='0.00948162'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.993388 0 -0.033542 1.68081' translation='4.18566 1.75775 0.961259'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0117647'></material>
+            </appearance>
+            <cylinder height='0.328989' radius='0.0196392'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.996376 0 -0.0592267 1.5097' translation='4.19669 1.74537 0.890534'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.186038' radius='0.0146152'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.476739 0 -0.0579308 2.64066' translation='4.20771 1.66751 0.93781'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.190485' radius='0.0109979'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.51006 0 -0.0302956 2.60529' translation='4.21875 1.42742 0.799511'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.894118 0'></material>
+            </appearance>
+            <cylinder height='0.364242' radius='0.0262526'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.963312 0 -0.0490903 1.83782' translation='4.22978 1.24125 0.59851'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.792157 0'></material>
+            </appearance>
+            <cylinder height='0.224452' radius='0.0324458'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.575959 0 -0.036377 0.615181' translation='4.2408 1.33551 0.403043'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.776471 0'></material>
+            </appearance>
+            <cylinder height='0.30335' radius='0.0334506'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.318662 0 -0.0430071 0.327367' translation='4.25184 1.58086 0.274803'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.917647 0'></material>
+            </appearance>
+            <cylinder height='0.256584' radius='0.0248276'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.498282 0 -0.042158 0.523671' translation='4.26286 1.8155 0.168806'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.105882'></material>
+            </appearance>
+            <cylinder height='0.26136' radius='0.0178671'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.39782 0 -0.841356 1.94536' translation='4.27389 1.92627 0.106299'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0131157' radius='0.0129345'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.765816 0 -0.617173 1.38918' translation='4.28493 1.92548 0.115754'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0178798' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.986882 0 -0.0243756 1.41052' translation='4.29595 1.96317 0.345649'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.452026' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.995529 0 -0.0282185 1.66106' translation='4.30698 1.98162 0.76335'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.391054' radius='0.0152729'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.681729 0 -0.0369801 2.3901' translation='4.31801 1.85497 1.05972'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.188235'></material>
+            </appearance>
+            <cylinder height='0.298402' radius='0.0161681'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.995145 0 -0.0626932 1.49486' translation='4.32904 1.75262 1.24888'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.175751' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.749004 0 -0.0845298 2.28783' translation='4.34007 1.7164 1.38522'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.130545' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.780351 0 -0.0418705 2.24457' translation='4.3511 1.59128 1.33128'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.263549' radius='0.0118566'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.659215 0 -0.0392554 2.42026' translation='4.36213 1.40368 1.13593'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.280685' radius='0.0128066'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.20645 0 -0.0422933 2.92926' translation='4.37316 1.17076 1.01648'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.0627451'></material>
+            </appearance>
+            <cylinder height='0.260915' radius='0.0187257'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.418341 0 -0.0412679 2.70774' translation='4.38419 0.921921 1.04548'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.945098 0'></material>
+            </appearance>
+            <cylinder height='0.267398' radius='0.0233478'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0863586 0 -0.0506413 3.04131' translation='4.39522 0.692367 1.11081'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.964706 0'></material>
+            </appearance>
+            <cylinder height='0.217577' radius='0.022142'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.246256 0 -0.0700079 2.8827' translation='4.40624 0.507939 1.10079'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.988235 0'></material>
+            </appearance>
+            <cylinder height='0.157624' radius='0.0206623'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.421334 0 -0.0488304 2.70357' translation='4.41728 0.329429 1.03378'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.870588 0'></material>
+            </appearance>
+            <cylinder height='0.225985' radius='0.0276776'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.565396 0 -0.0518336 2.5378' translation='4.42831 0.13961 0.926078'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.212573' radius='0.0115095'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.992147 0 -0.024855 1.4479' translation='4.43933 0.079329 1.08623'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.443973' radius='0.0119297'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.484995 0 -0.0349174 0.507794' translation='4.45037 0.244618 1.22983'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.956863 0'></material>
+            </appearance>
+            <cylinder height='0.31603' radius='0.0225988'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.354031 0 -0.0341805 0.363639' translation='4.46139 0.533335 1.09614'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.482353 0'></material>
+            </appearance>
+            <cylinder height='0.32236' radius='0.0510802'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.560349 0 -0.0278523 0.595642' translation='4.47242 0.847958 0.928068'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.607843 0'></material>
+            </appearance>
+            <cylinder height='0.396196' radius='0.0434254'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.550994 0 -0.0321015 0.584674' translation='4.48346 1.15527 0.722362'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.85098 0'></material>
+            </appearance>
+            <cylinder height='0.343751' radius='0.0289564'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.126927 0 -0.016674 0.12837' translation='4.49448 1.62628 0.585722'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.45098 0'></material>
+            </appearance>
+            <cylinder height='0.660813' radius='0.0527792'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.50277 0 -0.0631275 2.61022' translation='4.50551 1.87862 0.499842'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.898039 0'></material>
+            </appearance>
+            <cylinder height='0.174804' radius='0.0261795'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.351163 0 -0.0497998 2.77902' translation='4.51654 1.69968 0.416992'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 0.945098 0'></material>
+            </appearance>
+            <cylinder height='0.221586' radius='0.0234026'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.983425 0 -0.152818 1.66854' translation='4.52757 1.59257 0.342633'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0721013' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.82422 0 -0.0790681 0.975538' translation='4.5386 1.62818 0.249664'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.139563' radius='0.00864124'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.837189 0 -0.0601671 0.996083' translation='4.54963 1.71716 0.115377'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.183405' radius='0.0118931'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.753309 0 -0.125494 0.869011' translation='4.56066 1.79535 0.0716752'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0878004' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.745156 0 -0.443314 1.04926' translation='4.57169 1.82989 0.0954715'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.024892' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.418486 0 -0.885061 1.77604' translation='4.58272 1.83482 0.0835884'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.012468' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.233535 0 -0.853179 2.05603' translation='4.59375 1.83053 0.0794716'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0129145' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.385348 0 -0.921512 1.52259' translation='4.60477 1.82781 0.0756564'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0119748' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.771495 0 -0.443132 2.0449' translation='4.61581 1.82242 0.0637432'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0249022' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.778024 0 -0.599656 1.75924' translation='4.62684 1.81501 0.0469893'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0183745' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.369712 0 -0.595905 0.777187' translation='4.63786 1.81989 0.0432645'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.018518' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.625187 0 -0.437368 2.27367' translation='4.6489 1.81834 0.0388008'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0252303' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.256452 0 -0.936902 1.81068' translation='4.65992 1.80878 0.029406'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0117605' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='4.67095 1.80739 0.027898'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.109971 0 -0.981368 1.41258' translation='4.68199 1.80827 0.0285163'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112445' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.178546 0 -0.931833 1.24937' translation='4.69301 1.81103 0.0301902'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0118244' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.204743 0 -0.948246 1.81596' translation='4.70404 1.81148 0.0300544'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116372' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.161826 0 -0.986818 1.57261' translation='4.71507 1.81006 0.0279583'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111824' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.407439 0 -0.826947 1.17288' translation='4.7261 1.81263 0.0297679'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0133242' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.169113 0 -0.966797 1.37802' translation='4.73713 1.81631 0.0334474'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114139' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0897009 0 -0.965288 1.32296' translation='4.74816 1.8188 0.0338998'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114318' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.200691 0 -0.862575 2.05378' translation='4.75919 1.81724 0.0321053'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0127739' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.267193 0 -0.90519 1.23395' translation='4.77022 1.81629 0.0324522'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0121908' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0843258 0 -0.995262 1.61921' translation='4.78125 1.81803 0.0345483'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110875' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.313508 0 -0.946566 1.49506' translation='4.79228 1.8182 0.0331911'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116404' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.13198 0 -0.965779 1.34562' translation='4.8033 1.81992 0.0321204'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011426' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0647635 0 -0.987321 1.71623' translation='4.81434 1.82039 0.0332363'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111767' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.405658 0 -0.846856 1.92188' translation='4.82537 1.81734 0.0309592'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.013011' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.30106 0 -0.910347 1.28288' translation='4.83639 1.81682 0.0301449'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0121217' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='4.84743 1.81854 0.0319696'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.129364 0 -0.984599 1.45292' translation='4.85845 1.8192 0.0326934'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111908' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0869491 0 -0.964029 1.82469' translation='4.86948 1.81842 0.0329196'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114467' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='4.88052 1.81698 0.032422'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.262743 0 -0.897087 1.93397' translation='4.89154 1.8148 0.0308084'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0122824' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.324398 0 -0.860079 1.1661' translation='4.90257 1.81515 0.0312759'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0128301' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.324414 0 -0.942038 1.65646' translation='4.9136 1.81717 0.0314569'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0117139' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.149217 0 -0.973461 1.3964' translation='4.92463 1.81765 0.0304013'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113188' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.232518 0 -0.945263 1.33981' translation='4.93566 1.81997 0.032603'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116739' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.416192 0 -0.631852 2.28349' translation='4.94669 1.8156 0.0303259'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0174644' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.293488 0 -0.734386 0.912211' translation='4.95772 1.81448 0.0288933'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0150036' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='4.96875 1.81907 0.031095'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.14335 0 -0.989602 1.5826' translation='4.97978 1.819 0.0318942'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111509' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0879685 0 -0.973869 1.35986' translation='4.99081 1.82012 0.0331911'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011314' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.433642 0 -0.714689 2.15172' translation='5.00183 1.81707 0.030341'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0154402' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.01287 1.81283 0.0269932'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.303161 0 -0.946617 1.46099' translation='5.0239 1.81347 0.0287576'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116398' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0422128 0 -0.965301 1.31015' translation='5.03492 1.81558 0.0307632'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114316' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.04596 1.81706 0.0310045'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.217176 0 -0.95592 1.76972' translation='5.05698 1.81592 0.0297528'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0115265' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.148512 0 -0.987953 1.52728' translation='5.06801 1.81502 0.0293306'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111695' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.214185 0 -0.944171 1.31777' translation='5.07905 1.81673 0.0314116'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116874' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.122144 0 -0.991627 1.52887' translation='5.09007 1.81842 0.0319847'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111114' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.1011 1.81865 0.0313061'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.11213 1.81865 0.0313061'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.12316 1.81865 0.0313061'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.027321 0 -0.999623 1.56805' translation='5.13419 1.81867 0.0311553'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110391' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0518492 0 -0.998452 1.59095' translation='5.14522 1.81857 0.030718'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110521' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.15625 1.81846 0.0304314'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.107914 0 -0.940083 1.90014' translation='5.16727 1.81656 0.0297981'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0117383' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.214871 0 -0.970582 1.46195' translation='5.17831 1.81528 0.0303862'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113694' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.153046 0 -0.980922 1.69095' translation='5.18934 1.81523 0.0307481'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112327' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.158671 0 -0.951712 1.30486' translation='5.20036 1.81608 0.0308084'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0115948' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0843683 0 -0.995764 1.53425' translation='5.2114 1.8178 0.0312608'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110819' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.22242 1.81801 0.0307934'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0273009 0 -0.998886 1.5323' translation='5.23345 1.81822 0.0309442'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110473' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.24449 1.81843 0.031095'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.242867 0 -0.853143 2.0507' translation='5.25551 1.81545 0.0295266'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0129151' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.368436 0 -0.832119 1.14337' translation='5.26654 1.81522 0.0304013'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0132613' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.27758 1.81797 0.0328442'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.2886 1.81797 0.0328442'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0951615 0 -0.994792 1.53428' translation='5.29963 1.81817 0.0323164'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110927' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.31066 1.81837 0.0317886'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.228993 0 -0.972771 1.60656' translation='5.32169 1.81817 0.0304918'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113268' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.151255 0 -0.988235 1.54813' translation='5.33272 1.81809 0.0300394'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111663' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.20536 0 -0.916305 1.92178' translation='5.34375 1.81615 0.0296473'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0120429' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.28045 0 -0.93143 1.80485' translation='5.35478 1.81271 0.0267519'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0118296' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.371215 0 -0.833254 1.14863' translation='5.3658 1.81405 0.0275512'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0132432' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.447493 0 -0.85722 1.82844' translation='5.37684 1.81512 0.0271289'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.012873' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.395013 0 -0.797297 1.09687' translation='5.38787 1.81664 0.0269781'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0138197' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.39889 1.81979 0.0297076'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0544661 0 -0.996404 1.63574' translation='5.40993 1.81943 0.0300092'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110748' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.42095 1.81907 0.0303108'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0488618 0 -0.993197 1.4649' translation='5.43198 1.81966 0.0300394'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111105' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.232961 0 -0.754298 2.23167' translation='5.44302 1.81575 0.0280639'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0146294' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.192534 0 -0.976925 1.66338' translation='5.45404 1.81074 0.0252741'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112787' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.480681 0 -0.666181 0.964025' translation='5.46507 1.81494 0.0281694'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0165645' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0299254 0 -0.995372 1.66224' translation='5.4761 1.81916 0.0323164'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110863' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.250003 0 -0.961411 1.45571' translation='5.48713 1.81931 0.0310497'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114607' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.49816 1.81997 0.0296171'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.151285 0 -0.98843 1.58168' translation='5.50919 1.81991 0.0287726'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111641' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.289358 0 -0.771619 2.173' translation='5.52022 1.81581 0.0258622'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0142796' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.105991 0 -0.994357 1.57536' translation='5.53125 1.81174 0.0243844'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110976' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.474732 0 -0.741174 1.07623' translation='5.54227 1.81524 0.0285012'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0148662' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.416755 0 -0.881401 1.79504' translation='5.5533 1.81737 0.0294211'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0125198' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.170394 0 -0.890624 2.00602' translation='5.56433 1.81337 0.0257566'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0123901' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.358192 0 -0.823011 1.11425' translation='5.57536 1.81371 0.0270988'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0133879' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.141824 0 -0.879503 1.09924' translation='5.58639 1.81951 0.0303862'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0125468' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0242182 0 -0.98455 1.7451' translation='5.59742 1.82139 0.0314116'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112081' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.169351 0 -0.982054 1.48769' translation='5.60845 1.82088 0.0305973'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112198' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.344433 0 -0.724259 2.21098' translation='5.61948 1.8168 0.0270234'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0152362' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.63051 1.81225 0.0243994'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.246965 0 -0.784558 0.965811' translation='5.64154 1.81624 0.0261336'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0140441' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0569863 0 -0.992864 1.67574' translation='5.65256 1.81965 0.0275512'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111143' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.00819801 0 -0.99983 1.55428' translation='5.6636 1.81916 0.0272797'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110368' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0354461 0 -0.996121 1.49017' translation='5.67463 1.8197 0.0271289'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110613' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0340468 0 -0.958234 1.28289' translation='5.68565 1.82178 0.0271289'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0115159' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.137162 0 -0.965093 1.79581' translation='5.69669 1.82214 0.0281091'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114341' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.114073 0 -0.992252 1.52155' translation='5.70771 1.82114 0.0295266'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0111044' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.15845 0 -0.950391 1.84178' translation='5.71874 1.81985 0.0292401'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011611' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.72978 1.8183 0.0283202'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.285905 0 -0.958258 1.57168' translation='5.7408 1.8183 0.0266765'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114984' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.75183 1.81829 0.0250328'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.250783 0 -0.945942 1.36364' translation='5.76286 1.81949 0.0264956'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0116656' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.285441 0 -0.876308 1.96935' translation='5.77389 1.81825 0.0261638'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0125737' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.140704 0 -0.971337 1.37801' translation='5.78492 1.8169 0.0251685'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113606' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.155269 0 -0.979479 1.44194' translation='5.79595 1.81871 0.0268424'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112661' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.00534493 0 -0.976337 1.78871' translation='5.80698 1.81821 0.0277472'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112855' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.00791989 0 -0.965911 1.30906' translation='5.81801 1.81847 0.0277321'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0114244' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.82904 1.81995 0.0276869'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0429556 0 -0.980816 1.76211' translation='5.84007 1.81888 0.0274456'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112339' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.453839 0 -0.697693 2.15832' translation='5.85109 1.81343 0.0236153'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0158163' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.86213 1.80905 0.0200262'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110349' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.399443 0 -0.691608 0.925084' translation='5.87316 1.81384 0.0232081'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0159316' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.0214726 0 -0.982049 1.38228' translation='5.88418 1.81969 0.0265106'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0112367' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.252504 0 -0.739091 2.24527' translation='5.89522 1.81608 0.0247463'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0149304' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0708669 0 -0.995766 1.51221' translation='5.90624 1.81174 0.0224692'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110653' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.150154 0 -0.963834 1.79279' translation='5.91727 1.8108 0.0212176'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011449' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.365587 0 -0.796198 1.06775' translation='5.92831 1.81288 0.0228914'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0138596' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.383404 0 -0.886516 1.8328' translation='5.93933 1.81462 0.0230422'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0124289' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.388039 0 -0.72808 0.970255' translation='5.95036 1.81729 0.0236002'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0151562' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0.197258 0 -0.975308 1.47131' translation='5.96139 1.82213 0.0276567'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0113143' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='0 0 -1 1.5708' translation='5.97242 1.82269 0.0287726'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110184' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0571808 0 -0.996253 1.63573' translation='5.98345 1.82233 0.028456'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.0110765' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+        <transform rotation='-0.0245893 0 -0.999637 1.5818' translation='5.99448 1.82191 0.0280036'>
+          <shape>
+            <appearance>
+              <material diffuseColor='1 1 0.196078'></material>
+            </appearance>
+            <cylinder height='0.011039' radius='0.008'></cylinder>
+          </shape>
+        </transform>
+      </scene>
+    </x3d>
+    <xml>
+      <div style'float:left;'>
+        <fieldset style='margin:4px;'>
+          <table>
+            <tr>
+              <td>Navigation Mode:
+              </td>
+              <td align='right'>
+                <select style='float:right;' onchange='if (typeof this.selectedIndex != &apos;undefined&apos;) { var e = document.getElementById(&apos;x3dElement&apos;);if (this.options[this.selectedIndex].value === &apos;examine&apos;){ e.runtime.examine(); }else if (this.options[this.selectedIndex].value === &apos;lookat&apos;){ e.runtime.lookAt(); }else if (this.options[this.selectedIndex].value === &apos;walk&apos;){ e.runtime.speed(1.0); e.runtime.walk(); }else if (this.options[this.selectedIndex].value === &apos;fly&apos;){  e.runtime.speed(1.0); e.runtime.fly();  }else if (this.options[this.selectedIndex].value === &apos;walkfast&apos;){ e.runtime.speed(40.0); e.runtime.walk(); }else if (this.options[this.selectedIndex].value === &apos;flyfast&apos;){  e.runtime.speed(40.0); e.runtime.fly();  } }'>
+                  <option value='examine'>Examine
+                  </option>
+                  <option value='lookat'>LookAt
+                  </option>
+                  <option value='walk'>Walk
+                  </option>
+                  <option value='fly'>Fly
+                  </option>
+                  <option value='walkfast'>Walk (fast)
+                  </option>
+                  <option value='flyfast'>Fly (fast)
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td>Debug Display:
+              </td>
+              <td align='right'>
+                <input type='checkbox' onclick='if (this.checked){ document.getElementById(&apos;x3dElement&apos;).runtime.statistics(true); }else { document.getElementById(&apos;x3dElement&apos;).runtime.statistics(false); }'>Stats
+                </input>
+                <input type='checkbox' onclick='var x3dElem=document.getElementById(&apos;x3dElement&apos;);if (this.checked){ x3dElem.style.height=&apos;50%&apos;; } else { x3dElem.style.height=&apos;60%&apos;; }x3dElem.runtime.debug();'>Console
+                </input>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <button onclick='document.getElementById(&apos;x3dElement&apos;).runtime.showAll();'>Show Everything
+                </button>
+              </td>
+              <td>
+                <button onclick='document.getElementById(&apos;x3dElement&apos;).runtime.resetView();'>Reset View
+                </button>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </div>
+      <div>
+      </div>
+      <div style='clear:both;'></div>
+      <br></br>
+    </xml>
+
+
+
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+
+
+{% end %}
+
+
+
+
+
+
+
+
+
+

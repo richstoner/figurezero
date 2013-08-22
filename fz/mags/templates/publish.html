@@ -1,0 +1,424 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+     <!--[if lte IE 8]>
+         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+     <![endif]-->
+
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+    
+    <style type="text/css">
+
+      body
+      {
+        margin:0px;
+      }
+
+    </style>
+
+{% end %}
+
+{% block js %}
+
+    <script src="{{ static_url( 'js/leaflet.js') }}"></script>
+    
+
+
+    <script src="{{ static_url( 'prod/fz.min.js') }}"></script>
+
+
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=ra-504f56295c45ed14"></script>
+
+
+
+{% end %}
+
+{% block content %}
+    
+    
+    <span style="display:none;" id="parseID">{{ messages }}</span>
+    <div style="display:none;" id="initialRegion"></div>
+
+    <div id="activityView"></div>
+    <div id="todoapp">
+      <div class="content">
+
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+
+  
+
+    <!-- Templates -->
+
+
+
+
+
+
+ <script type="text/template" id="view-template">
+
+
+          <div class="customView" onmouseover="highlightMapGlobal(<%= index %>);" onmouseout="clearHighLightsGlobal();" onclick="zoomToGlobal(<%= index %>);">
+            
+            <div class="customViewClose close pull-right hidden-phone"><a target="_blank" href="<%= properties.bitlyurl %>+ "><i class="icon-info-sign"></i></a></div>
+            
+            <div class="customViewClose close pull-right"><a target="_blank" href="<%= properties.qrURL %> "><i class="icon-qrcode"></i></a></div>
+
+            <div class="customViewClose close pull-right"><a target="_blank" href="<%= properties.bitlyurl %> "><i class="icon-picture"></i></a></div>
+
+              <img id="viewThumbnail" src="<%= properties.thumburl %> "/ >
+
+              <p class="rowHeader"> <span class="heavier"><%= properties.title %></span></p><p><%= properties.description %></p>
+
+              <div class="clearfix"></div>
+
+          </div>
+
+    </script>
+
+
+
+
+
+
+    
+
+    <script type="text/template" id="reference-template">
+
+      <div class="">
+          <div class="customReference" onmouseover="highlightRefGlobal(<%= index %>);" onmouseout="clearRefHighLightsGlobal();" onclick="zoomRefGlobal(<%= index %>);">
+
+            <% if (properties.reftype =='Pubmed ID') { %>
+
+              <a target="_blank" href="http://www.ncbi.nlm.nih.gov/pubmed?term=<%= properties.id %>"><img id="viewThumbnail" src="/static/css/images/pubmed-marker.png"/ ></a>
+
+            <% } %>
+
+            <% if (properties.reftype =='DX.DOI') { %>
+
+              <a target="_blank" href="<%= properties.id %>"><img id="viewThumbnail" src="/static/css/images/doi-marker.png"/ ></a>
+
+            <% } %>
+
+            <% if (properties.reftype =='Youtube ID') { %>
+
+              <a target="_blank" href="http://www.youtube.com/watch?v=<%= properties.id %>"><img id="viewThumbnail" src="/static/css/images/yt-marker.png"/ ></a>
+
+            <% } %>
+
+            <% if (properties.reftype =='Vimeo ID') { %>
+
+              <a target="_blank" href="http://www.vimeo.com/<%= properties.id %>"><img id="viewThumbnail" src="/static/css/images/vim-marker.png"/ ></a>
+
+            <% } %>
+
+            <% if (properties.reftype =='Other URL') { %>
+
+              <img id="viewThumbnail" src="/static/css/images/other-marker.png"/ >
+
+            <% } %>
+
+
+            
+
+              <p class="customViewTitle"> <span class="heavier"><%= index +1 %>. <%= properties.title %></span></p>
+
+              <% if (properties.reftype =='Pubmed ID') { %>
+                <p><%= properties.authors %></p>
+              <% } %>
+
+              <% if (properties.reftype =='DX.DOI') { %>
+               <p><%= properties.authors %></p>
+              <% } %>
+
+              <p><%= properties.description.substr(0,100) %></p>
+            
+
+          
+
+
+
+
+            <% if (properties.reftype =='Other URL') { %>
+
+              <a target="_blank" href="<%= properties.id %>"><%= properties.id %></a><br>
+
+            <% } %>
+
+            <div class="clearfix"></div>
+
+
+          </div>
+      </div>
+
+    </script>
+
+
+
+
+
+
+<script type="text/template" id="publish-app-template">
+  <div class="navbar navbar-inverse headerBar">
+    <div class="navbar-inner">
+      <div class="container">
+     
+        
+
+        <a class="brand hidden-phone" href="/">FigureZero</a>
+
+        <% if(Parse.User.current()){ %>
+          <div class="btn-group pull-right">
+            <span id="starSpan"></span>
+          </div>
+                    
+
+          <span id="publishButton"></span>
+
+        <% } %>
+
+      <ul class="nav pull-right">
+          <li><a href="/summary/{{ messages }}"><span class="hidden-phone" >Figure summary</span><span class="visible-phone"><i class="icon-list-alt icon-white"></i></span></a></li>
+        </ul>
+        
+
+        
+
+
+
+        <% if(Parse.User.current()){ %>
+
+           <ul class="nav">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i>  <span class="hidden-phone"><%= Parse.User.current().get('username') %></span><i class="caret icon-white"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a id="logoutButton"><i class="icon-off"></i>  Sign out</a></li>
+                </ul>
+              </li>
+              <li><a href="/library"><i class="icon-home icon-white"></i>  <span class="hidden-phone">Library</span></a></li>
+            </ul>         
+                  
+        <% } else { %>
+
+           <ul class="nav">
+             <li class="">
+
+                <a href="#myModal" data-toggle="modal"><i class="icon-user icon-white"></i>  Sign in</a>
+
+
+              </li>
+              <li><a href="/library"><i class="icon-home icon-white"></i>  <span class="hidden-phone">Library</span></a></li>
+            </ul> 
+
+
+        <% } %>
+
+                <ul class="nav">
+          
+          
+      
+                </ul>
+        
+        
+ 
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="row-fluid">
+    <div id="leftblock" class='span8'>
+      <div id="map"></div>
+      </div>
+
+      <div id="rightblock" class='span4 hidden-phone'>
+        <br>
+        <ul class="nav nav-tabs hidden-phone" id="myTab">
+          <li class="active"><a href="#Abstract">Abstract</a></li>
+          <li ><a href="#Views">Regions</a></li>
+          <li><a href="#Citations">References</a></li>
+          
+          <li><a style="display:none;" href="#edit"></a></li>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="tab-content ">
+
+          <div class="tab-pane active" id="Abstract">
+            <span id="editTextSpan"></span>
+            <div class="clearfix"></div>
+            
+            <h4 class="rowHeader"><span id="figureTitle"></span></h4>
+            <br>
+            
+            <p class="rowHeader"><b>Author(s)</b> <span id="figureAuthor"></span></p>
+
+            <p><span id="figureDescription"></span></p>
+
+
+            
+
+            <p><b>Tags</b> <span id="figureTags"></span></p>
+            <p><b>External link</b> (if provided) <span id="figureExternal"></span></p>
+                  
+            <br>
+            <h4 id="shortLinkURL"></h4>  
+            <hr>
+            <div id="qrcode"></div>
+        </div>
+
+
+        <div class="tab-pane" id="edit">
+          <strong><i>Figure title</i></strong>
+          <textarea rows="1" id="figureTitleEDIT" style="width:90%;" placeholder="title"></textarea>
+
+          <br>
+
+          <strong><i>Author list</i></strong>
+          <textarea rows="1" id="figureAuthorList" style="width:90%;" placeholder="author list & contact information"></textarea>
+
+          <br>
+
+          
+          <div id="abstractText">
+
+            <strong><i>Figure description</i></strong><br>
+            <textarea id="figureDescriptionEDIT" style="width:90%;" rows="9"></textarea>
+          </div>
+
+          <strong><i>External link</i></strong>
+          <textarea rows="1" id="figureExternalEDIT" style="width:90%;" placeholder="Abstract URL (or sciple link)"></textarea>
+
+          
+            <strong><i>Figure tags</i></strong>
+            <p><small> Press 'return' or 'enter' to add each tag.</small></p>
+            <div id="textareacontainer">
+              <textarea id="textarea " style="width:90%;" rows="1"></textarea>
+            </div>
+
+
+            <div class="clearfix"></div>
+            <br><br><br>
+            <div class="btn-toolbar">
+              <div class="btn-group">
+                <button class="btn" id="reload-text-button"><i class="icon-refresh"></i> Reload text </button>
+              </div>
+              <div class="btn-group pull-right " style="margin-right:30px;">
+                <button class="btn btn-success " style="width:100px;" id="save-text-button"><i class="icon-ok icon-white"></i>  <b>Save</b></button>
+              </div>
+            </div> 
+
+          </div>
+
+
+
+
+        <div class="tab-pane" id="Views">
+
+          <span id="editRegionSpan"></span>
+          <div class="clearfix"></div>
+          
+                
+          <div id="viewContainer">
+
+          </div>
+        </div>
+
+        <div class="tab-pane" id="Citations">
+        <span id="editReferenceSpan"></span>
+        <div class="clearfix"></div>
+          
+          <div id="referenceContainer">
+          
+          </div>
+        </div>
+
+        
+
+      </div>
+    </div
+  </div>
+
+  <div class="clearfix"></div>
+
+  <div class="navbar navbar-inverse footerBar">
+    <div class="navbar-inner">
+      <div class="container">
+        <div class="btn-group">
+          <span id="at-box"></span>         
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+<div class="modal" style="display:none;" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1>FigureZero <small>web</small></h1>
+  </div>
+ 
+  <div class="modal-body" style="height:300px;">
+    <div class="">
+      <div class="login publicContent">
+        <center>
+        
+          <h4 >Sign in or create account</h4>
+          <div id="error" style="display:none"></div>
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" style="width:260px;" id="signup-username" placeholder="Username" />
+            </div>
+          </div>
+
+          <div class="control-group">  
+            <div class="controls">
+              <input type="password" class="input"  style="width:260px;" id="signup-password" placeholder="Password" />
+              </div>
+            </div>
+        
+
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" style="width:260px;" id="signup-email" placeholder="Email (not needed for login)" />
+            </div>
+            <p><i>A valid email is only needed for password reset<i></p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" id="signin-button">Sign in</button>
+    <button class="btn btn-success" id="createaccount-button">Create account</button>
+  </div>
+</div>
+
+
+
+</script>
+
+{% end %}
+
+
+
+
+
+
+
+
+

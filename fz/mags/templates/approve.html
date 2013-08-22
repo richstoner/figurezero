@@ -1,0 +1,245 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+     <!--[if lte IE 8]>
+         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+     <![endif]-->
+    <link rel="stylesheet" href="/static/css/leaflet.draw.css" />
+    <style type="text/css">
+
+    #conversionText
+    {
+      padding: 5px;
+      line-height: 30px;
+
+    }
+
+    #approvalContainer
+    {
+      height:300px;
+    }
+
+    #approvalBlock
+    {
+      display: none;
+    }
+
+    </style>
+
+{% end %}
+
+{% block js %}
+
+    <script src="{{ static_url( 'js/leaflet.js') }}"></script>
+
+    <script src="/static/prod/approve.min.js"></script>
+
+{% end %}
+
+{% block content %}
+    
+
+    
+    
+
+    <div id="todoapp">
+      <div class="content">
+
+      </div>
+    </div>
+
+    <!-- Templates -->
+
+    <script type="text/template" id="login-template">
+        <div class="span4">
+          <div id="homeHero" class="pull-right">
+            <h1>FigureZero <small>web</small></h1>
+            <br>
+            <h4>Before continuing, please sign in or create a new account...</h4>
+            
+          </div>
+
+          <div id="homeHero" class="visible-phone">
+            <h1>iPhone or iPad user?</h1>
+            <br>
+            <h4>Download the free app...</h4>
+            
+          </div>
+
+        </div>
+
+        <div class="span6 offset1">
+          <div class="login publicContent">
+            <form class="login-form">
+              <br>
+              <h4>Log In</h4>
+              <div class="error" style="display:none"></div>
+              <div class="control-group">
+                <div class="controls">
+                <input type="text" class="input" id="login-username" placeholder="Username" />
+                </div>
+              </div>
+
+              <div class="control-group">
+                <div class="controls">
+                  <input type="password" class="input" id="login-password" placeholder="Password" />
+                </div>
+              </div>
+            <div class="form-actions">
+              <button class="btn btn-inverse">Log In</button>
+            </div>
+            <br>
+            </form>
+
+          </div>
+        
+        <div class="login publicContent">
+        <form class="signup-form ">
+          <br>
+          <h4 >Create an account</h4>
+          <div class="error" style="display:none"></div>
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" id="signup-username" placeholder="Username" />
+            </div>
+          </div>
+
+        
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" id="signup-email" placeholder="Email" />
+            </div>
+          </div>
+
+          
+          <div class="control-group">  
+            <div class="controls">
+              <input type="password" class="input" id="signup-password" placeholder="Create a Password" />
+              </div>
+            </div>
+        <div class="form-actions">
+          <button class="btn btn-inverse">Sign Up</button>
+        </div>
+        <br>
+      
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+    </script>
+
+
+
+    <script type="text/template" id="manage-todos-template">
+<div class="navbar navbar-inverse headerBar">
+    <div class="navbar-inner">
+      <div class="container">
+
+        <a class="brand hidden-phone" href="/library">FigureZero</a>
+
+        <% if(Parse.User.current()){ %>
+          <div class="btn-group pull-right">
+            <span id="starSpan"></span>
+                
+              
+          </div>
+                    
+        <% } %>
+        
+
+        <% if(Parse.User.current()){ %>
+
+           <ul class="nav">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i> Signed in as <%= Parse.User.current().get('username') %>
+                </a>
+                <ul class="dropdown-menu">
+                  
+                  <li><a id="logoutButton"><i class="icon-off"></i>  Sign out</a></li>
+                </ul>
+              </li>
+              <li><a href="/library"><i class="icon-home icon-white"></i>  <span class="hidden-phone">Library</span></a></li>
+            </ul>          
+                  
+        <% } else { %>
+
+           <ul class="nav">
+              <li class="dropdown">
+
+
+                <a href="#" class="dropdown-toggle" id="dropDownButton" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i> Sign in
+                </a>
+                <ul class="dropdown-menu" id="dropDownLogin">
+                
+                    <input type="text" id="login-username" class="input-medium" placeholder="Username">
+                    <br>
+                    <input type="password" id="login-password" class="input-medium" placeholder="Password">
+                    <br>
+                    <button class="btn btn-mini btn-primary" id="signinButton">Sign in</button>
+                
+                </ul>
+              </li>
+            </ul> 
+
+
+        <% } %>
+ 
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+
+        <div class="row-fluid">
+
+          <div id="leftblock" class='span8'>
+            
+              <div id="map" style="height:600px;"></div>
+              
+          </div>
+
+          <div id="rightblock" class='span4'>
+            <br>
+              <div id="addReferenceRegion">
+                <div id="approvalBlock">
+                  
+                </div>
+              </div>
+                
+                <div class="clearfix"></div>
+                
+                  <br>
+                  <div id="conversionText">
+                    
+                    <b>Upload ID : </b><span id="parseID">{{ messages }}</span><br>
+                    <b>Original name : </b><span id="_filename"></span><br>
+                    <b>File size : </b><span id="_filesize"></span><br>
+                    <b>Processing status : </b><span id="_procstatus"></span><br>
+                    <b>Image size : </b><span id="_imagesize"></span><br>
+                      
+                  </div>
+              
+              </div>
+            </div>
+    </script>
+
+{% end %}
+
+
+
+
+
+
+
+
+
+

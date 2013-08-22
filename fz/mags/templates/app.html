@@ -1,0 +1,664 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+    <style type="text/css">
+
+    #progress_bar {
+      width: 200px;
+      margin: 10px 0;
+      padding: 3px;
+      border: 1px solid #000;
+      font-size: 14px;
+      clear: both;
+      opacity: 0;
+      -moz-transition: opacity 1s linear;
+      -o-transition: opacity 1s linear;
+      -webkit-transition: opacity 1s linear;
+    }
+    #progress_bar.loading {
+      opacity: 1.0;
+    }
+
+    #progress_bar .done {
+
+    }
+
+    #progress_bar .percent {
+      background-color: #0099ff;
+      height: auto;
+      width: 0;
+
+      .modal { 
+    position: fixed; 
+    top: 3%; 
+    right: 3%; 
+    left: 3%; 
+    bottom: 3%; 
+    width: auto; 
+    margin: 0; 
+}
+@media (max-width: 767px) {
+  #content .modal.fade.in {
+    top: 5%;
+  }
+}
+}
+
+
+</style>
+
+{% end %}
+
+{% block js %}
+
+<script src="{{ static_url( 'prod/app.min.js') }}"></script>
+<script src="{{ static_url( 'js/modal-responsive-fix.min.js') }}"></script>
+
+
+{% end %}
+
+{% block content %}
+    
+
+    <div style="display:none;" id="hiddenSearchTerm"></div>
+    <div id="todoapp">
+
+      <div class="content">
+      </div>
+
+    </div>
+
+    <script type="text/template" id="figure-template">
+          
+      <% if (Parse.User.current() != null) { %>
+        <% if( Parse.User.current().id == parseDict.parseUserId ) { %>
+          <% if(stat < 6) { %> 
+
+            <!-- my figure, being processed --> 
+
+              <td class="thumbnailSpan">
+                <div class="pull-left" style="height:100%;">
+                  <div class=" visible-phone">
+                    <img class="tableThumbnail" src="http://placekitten.com/150/117"/>
+                  </div>
+
+                  <div class="pull-left hidden-phone">
+                    <img class="tableThumbnail" src="http://placekitten.com/150/117"/>
+                  </div>
+                </div>
+
+                <p><b>Figure ID: </b><%= parseDict.parseObjectID %><br>
+                <b>File name: </b><%= originalFilename %></p>
+                    
+              </td>
+
+              <td class="statusSpan">
+                <h4 class="rowHeader">Conversion in progress...</h4>
+                <progress class="hidden-phone" id="figureProgress" min="0" max="100" value="<%= stat * 5 %>"><%= stat * 5 %> % complete</progress>
+                <p>Figure conversion may take 3-4 minutes to complete.<br><b>Conversion status: </b><%= processingStatus %></p>
+
+              </td>
+
+              <td class="actionSpan"> 
+                <button class='btn' id="refreshButton"><i class="icon-refresh"></i>  Refresh</button>
+                <button class="btn btn-danger" onclick="deleteFZObjectGlobal('<%= parseDict.parseObjectID %>');"><i class='icon-trash icon-white'></i></button>
+                <p></p>
+
+              </td>
+               
+          <% } else if( stat == 6 ) { %>
+                   
+            <!-- my figure, needs approval --> 
+
+              <td class="thumbnailSpan">
+                <div class="pull-left" style="height:100%;">
+                  <a class=" visible-phone" href="/approve/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+
+                  <a class="pull-left hidden-phone" href="/approve/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+                </div>
+
+                <p class="hidden-phone"><b>Figure ID: </b><%= parseDict.parseObjectID %><br>
+                <b>File name: </b><%= originalFilename %></p>
+              </td>
+
+              <td class="statusSpan">
+                <h4 class="rowHeader">Conversion complete.</h4>
+                <progress class="hidden-phone" id="figureProgress" min="0" max="100" value="<%= stat * 5 %>"><%= stat * 5 %>% complete</progress>
+                <p>To continue, please check that we converted your poster correctly...</p>
+              </td>
+
+              <td class="actionSpan"> 
+
+                <div class="btn-toolbar">
+                  <div class="btn-group">
+                    <a class="btn btn-info" href="/approve/<%= parseDict.parseObjectID %>"> Check conversion</a>
+                  </div>
+                </div>
+              </td>
+
+ 
+            <% } else if( stat > 6 ) { %>
+   
+              <!-- my figure, approved --> 
+
+              <td class="thumbnailSpan">
+                <div class="pull-left" style="height:100%;">
+                  <a class=" visible-phone" href="/summary/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+
+                  <a class="pull-left hidden-phone" href="/fz/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+                </div>
+
+                
+                <div class="pull-left hidden-phone" style="width:48%;">
+                  
+                
+                  <b>Tags:</b> 
+
+
+                  <% for (var i = 0; i < tag.length; i++) { %>
+                    <% var atag = tag[i].replace(/(\r\n|\n|\r)/gm,""); %>
+                      <a href="/library/#/tag/<%= atag %>"><%= atag %></a>, 
+                  <% } %>
+
+
+
+                  <br>
+                  <div class="hidden-phone">
+                    ROIs: <a href="/fz/<%= parseDict.parseObjectID %>"><span class="badge "> <%= viewArray.length %></span></a><br>
+                    References: <a href="/fz/<%= parseDict.parseObjectID %>"><span class="badge"><%= referenceArray.length %></span></a> 
+                    <p class="">Starred:  <span class="badge badge-warning"><%= starArray.length > 0 ? starArray.length : 0 %></span></p> 
+                  </div>
+                </div>
+              </td>
+
+              <% if( published ) { %>
+
+                <!-- my figure, being published --> 
+
+                <td class="statusSpan">
+                  <h4 class="rowHeader"><strong><%= figureTitle %></strong></h4>
+
+                  
+                  <% var percent = 100; %>
+
+                  <progress class="hidden-phone"  id="figureProgress" min="0" max="100" value="<%= percent %>"><%= percent %>% complete</progress>
+
+
+
+
+                  <p class="hidden-phone">This figure is now available online and will show up in searches. Changes can only be made to unpublished figures. </p>
+                  <p class="visible-phone">This figure is online and will show up in searches.</p>
+                </td>
+
+                <!-- actions -->
+                <td class="actionSpan">
+                  
+
+                    <div class="btn-group pull-left " style="width:80%;">                    
+                      <a onclick="publishModelGlobal('<%= parseDict.parseObjectID%>', true)" class="btn btn-small btn-inverse" style="width:80%;" >Unpublish </a>
+                    </div>
+                    
+                  <div class="clearfix"></div>
+
+
+                    
+                  
+                </td>
+
+              
+              <% } else { %>
+
+                <!-- my figure, approved but not published --> 
+
+                <td class="statusSpan">
+                  
+                  <h4 class="rowHeader">Current title: <%= figureTitle %></h4>
+                  
+                  <% var percent = 30; %>
+
+                  <% if (viewArray.length > 0) { percent += 10;} %>
+                  <% if (referenceArray.length > 0) { percent += 10;} %>
+                  <% if (figureTitle.length > 0) { percent += 10;} %>
+
+
+                  <progress class="hidden-phone"  id="figureProgress" min="0" max="100" value="<%= percent %>"><%= percent %>% complete</progress>
+
+                  <% if( viewArray.length == 0 ) { %>
+                      <p class="">No regions added - would you like to add a few? <a href="/roi/<%= parseDict.parseObjectID %>"><br>(add region)</a></p>
+                  <% } else if( referenceArray.length == 0 )  { %>
+                      <p class="">No references found - would you like to add a few?<a href="/ref/<%= parseDict.parseObjectID %>"><br>(add references)</a></p>
+                  <% } else { %>
+                      <p class="">Do you need to edit any text details? <a href="/fz/<%= parseDict.parseObjectID %>"><br>(edit text details)</a></p>
+                  <% } %>
+                </td>
+
+                <!-- actions -->
+                <td class="actionSpan">
+                
+                    <div class="btn-group pull-left">                    
+                      <a class="btn btn-small btn-primary" onclick="publishModelGlobal('<%= parseDict.parseObjectID%>', false)" style="width:80%;">Publish <span class="hidden-phone">figure</span></a>
+                    </div>
+                    <br><br>
+
+                    <div class="btn-group pull-left">
+                      <a class="btn btn-small btn-primary dropdown-toggle" data-toggle="dropdown" href="#" style="width:80%;">Edit <span class="hidden-phone">content</span> <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                      <li><a class="" href="/fz/<%= parseDict.parseObjectID %>">Edit text</a></li>
+                        <li><a class="" href="/roi/<%= parseDict.parseObjectID %>">Edit regions</a></li>
+                        <li><a class="" href="/ref/<%= parseDict.parseObjectID %>">Edit references</a></li>
+                        <li class="divider"></li>
+                                     
+
+                        
+                        <li><a class="#" onclick="deleteFZObjectGlobal('<%= parseDict.parseObjectID%>')"><i class="icon-trash"></i> Delete figure</a></li>
+
+                      </ul>
+                    </div>                    
+                  </div>
+                </td>
+
+            <% } %>
+
+          <% } %>
+
+        <% } else { %>
+      
+            <% if( stat > 6 ) { %>
+
+              <!-- not my figure --> 
+              
+              <td class="thumbnailSpan">
+                <div class="pull-left" style="height:100%;">
+                  <a class=" visible-phone" href="/summary/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+
+                  <a class="pull-left hidden-phone" href="/fz/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+                </div>
+                
+                <div class="hidden-phone">
+                
+                  <b>Tags:</b> 
+
+
+                  <% for (var i = 0; i < tag.length; i++) { %>
+                    <% var atag = tag[i].replace(/(\r\n|\n|\r)/gm,""); %>
+                      <a href="/library/#/tag/<%= atag %>"><%= atag %></a>, 
+                  <% } %>
+
+
+
+                  <br>
+                  <div class="hidden-phone">
+                    <b>ROIs:</b> <a href="/fz/<%= parseDict.parseObjectID %>"><span class="badge "> <%= viewArray.length %></span></a><br>
+                    <b>References:</b> <a href="/fz/<%= parseDict.parseObjectID %>"><span class="badge"><%= referenceArray.length %></span></a> 
+                  </div>
+                </div>
+
+              </td>
+
+                <td class="statusSpan">
+                  <h4 class="rowHeader"><strong><%= figureTitle %></strong></h4>
+                  <h4 class="rowHeader">Primary author: <%= author %></h4>
+                </td>
+
+                  <!-- actions -->
+                  <td class="actionSpan">
+                    <div class="btn-toolbar">
+
+                      <div class="btn-group-vertical">
+                        <% if( parseDict.starred ) { %>
+                            <a class="btn btn-warning btn-small " onclick="starFigureGlobal('<%= parseDict.parseObjectID%>')"><span class="icon-star icon-white"></span></a>
+                        <% } else { %>
+                            <a class="btn btn-small" onclick="starFigureGlobal('<%= parseDict.parseObjectID%>')"><span class="icon-star"></span></a>
+                        <% } %>
+                
+                      </div>
+                
+                    </div>
+                  </td>
+
+          <% } %>
+
+
+        <% } %>
+        
+      <% } else { %>
+
+        <!-- not my figure, not signed in  --> 
+
+        <% if( stat > 6 ) { %>
+              
+              <td class="thumbnailSpan">
+                <div class="pull-left" style="height:100%;">
+                  <a class=" visible-phone" href="/summary/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+
+                  <a class="pull-left hidden-phone" href="/fz/<%= parseDict.parseObjectID %>">
+                    <img class="tableThumbnail" src="<%= thumbnailLocation %>"/>
+                  </a>
+                </div>
+
+                
+                <div class="metadataRegion hidden-phone">
+                
+                 
+
+
+                  <div class="hidden-phone">
+                    <b>Regions:</b> <a href="/fz/<%= parseDict.parseObjectID %>"><span class=" "><b><%= viewArray.length %></b></span></a><br>
+                    <b>References:</b> <a href="/fz/<%= parseDict.parseObjectID %>"><span class=""><b><%= referenceArray.length %></b></span></a> 
+                  </div>
+
+
+                   <b>Tags:</b> 
+
+                  <% for (var i = 0; i < tag.length; i++) { %>
+                    <% var atag = tag[i].replace(/(\r\n|\n|\r)/gm,""); %>
+                      <a href="/library/#/tag/<%= atag %>"><%= atag %></a>, 
+                  <% } %>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+              </td>
+
+               <td class="statusSpan">
+                      
+                      <h4 class="rowHeader"><strong><%= figureTitle %></strong></h4>
+                      <h4 class="rowHeader">Primary author: <%= author %></h4>
+                </td>
+
+                  <!-- actions -->
+                  <td class="actionSpan">
+                    <div class="btn-toolbar">
+
+                      <div class="btn-group-vertical">
+                        <% if( parseDict.starred ) { %>
+                            <a class="btn btn-warning btn-small " onclick="starFigureGlobal('<%= parseDict.parseObjectID%>')"><span class="icon-star icon-white"></span></a>
+                        <% } else { %>
+                            <a class="btn btn-small" href="#myModal" data-toggle="modal"><span class="icon-star"></span></a>
+                        <% } %>
+                
+                      </div>
+                
+                    </div>
+                  </td>
+
+          <% } %>
+      <% } %>
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/template" id="manage-todos-template">
+
+<div class="navbar navbar-inverse headerBar">
+    <div class="navbar-inner">
+      <div class="container">
+     
+        
+
+        <span class="brand hidden-phone">FigureZero</span>
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+              <span class="icon-search icon-white"></span>              
+            </a>
+
+        <% if(Parse.User.current()){ %>
+
+           <ul class="nav">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i>  <%= Parse.User.current().get('username') %><i class="caret icon-white"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <!--<li><a href="/library"><i class="icon-home"></i>  <span class="hidden-phone">Library</span></a></li>-->
+                  <!--<li class="divider"><li>-->
+                  <li><a id="logoutButton"><i class="icon-off"></i>  Sign out</a></li>
+                </ul>
+              </li>
+              
+            </ul>         
+                  
+          <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle uploadButton" id="dropDownUpload" data-toggle="dropdown">
+                  <i class="icon-arrow-up icon-white"></i> <b class="hidden-phone">UPLOAD FIGURE</b>
+                </a>
+                <ul class="dropdown-menu uploadButton" id="dropDownUpload">
+              
+                       
+                        <progress class="embedProgress" min="0" max="100" value="0">0% complete</progress>
+                    <form id="uploadForm" class="navbar-form pull-left" action="{{ postdict[0] }}" method="post" enctype="multipart/form-data">
+                      <input type="hidden" name="key" value="{{ postdict[1]['key'] }}"/>
+                      <input type="hidden" name="acl" value="{{ postdict[1]['acl'] }}" />
+                      <input type="hidden" name="success_action_redirect" value="http://figurezero.com/complete/" />
+                      <input type="hidden" id="accesskey" name="AWSAccessKeyId " value="{{ postdict[1]['AWSAccessKeyId'] }}"  />
+                      <input type="hidden" name="Policy" value="{{ postdict[1]['policy'] }}"  />
+                      <input type="hidden" name="Signature" value="{{ postdict[1]['signature'] }}" />
+                      <input type="hidden" id="parseIDinput" name="x-amz-meta-parse" value=""/>
+                      <input type="hidden" class="input-xlarge" id="input01" name="x-amz-meta-email">
+                      <input type="hidden" class="input-xlarge" id="input01"  name="x-amz-meta-tag">
+                      <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <p class="embedProgress">Valid files: jpg, png, pdf, svg</p>
+                        <div class="fileupload-preview uneditable-input" style="width:130px;margin-top:10px; margin-left:10px;"></div>
+ 
+
+                        <span class="btn btn-small btn-inverse btn-file" style="width:50px;margin-left:10px;">
+
+                          <span class="fileupload-new">Select file</span><span class="fileupload-exists">Change</span><input type="file" id="fileUpload" name="file"/></span>
+
+                        <button id="uploadButton" type="submit" class="btn-small btn btn-success disabled">Upload</button>
+                      </div>
+                    </form>
+                  </ul>
+                </li>
+
+              </ul>
+
+
+              <ul class="nav pull-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="icon-th-list icon-white"></span> 
+                  </a>
+                  <ul class="dropdown-menu">
+                      <li><a id="showAllPublic" class="">Show all figures</a></li>
+                      <li><a id="showUploads" class="">Show my uploads</a></li>
+                      <li><a id="showStarred" class="">Show starred figures</a></li>
+                    <li class="divider"></li>                  
+                      <li><a id="clearSearch" class="">Reset search</a></li>
+                    <li class="divider"></li>                  
+                    <li><a onclick="setSortStateGlobal(0);" class="">Show newest first</a></li>
+                    <li><a onclick="setSortStateGlobal(1);" class="">Show oldest first</a></l>
+                    <li><a onclick="setSortStateGlobal(3);" class="">Sort by title A->Z</a></li>
+                    <li><a onclick="setSortStateGlobal(2);" class="">Sort by title Z->A</a></li>
+                  </ul>
+                </li>
+              </ul>
+
+        <% } else { %>
+
+           <ul class="nav">
+              <li class="">
+
+                <a href="#myModal" data-toggle="modal"><i class="icon-user icon-white"></i> <b style="text-color:#0099ff !important;"> Sign in / Create account </b></a>
+
+
+              </li>
+
+              <!--<li><a href="/library"><i class="icon-home icon-white"></i>  <span class="hidden-phone">Library</span></a></li>-->
+            </ul> 
+            <ul class="nav pull-right">
+             <li class="dropdown">
+                <a href="#myModal" data-toggle="modal" class="uploadButton" id="dropDownUpload">
+                  <i class="icon-arrow-up icon-white"></i> <b class="hidden-phone">UPLOAD FIGURE</b>
+                </a>
+              </li>
+            </ul>
+
+
+        <% } %>
+
+
+
+            <!-- Everything you want hidden at 940px or less, place within here -->
+            <div class="nav-collapse">
+
+
+
+              <form class="navbar-search pull-right" id="searchForm">
+                <input type="text" class="search-query" id="searchQuery" placeholder="Title search">
+              </form>
+
+
+            </div>
+
+        
+        
+ 
+      </div>
+    </div>
+  </div>
+
+      <div class="clearfix"></div>
+
+        <div class="row">
+          <div class="span12"  id="myFiguresDiv">
+
+            <table class="table">
+                  <thead class="hidden-phone">
+                    <tr>
+                      
+                      <th><h4 class="tableHeader">Details</h4></th>
+                      <th><h4 class="tableHeader">Status</h4></th>
+                      <th><h4 class="tableHeader">Starred</h4></th>
+                      
+                    </tr>
+                  </thead>
+                  <tbody id="viewTable">
+                    
+                  </tbody>
+
+                </table>
+                
+            </div>
+        </div>
+
+      <div class="clearfix"></div>
+
+    
+<div class="modal" style="display:none;" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h1>FigureZero <small>web</small></h1>
+  </div>
+ 
+  <div class="modal-body" style="height:300px;">
+    <div class="">
+      <div class="login publicContent">
+        <center>
+        
+          <h4 >Sign in or create account</h4>
+          <div id="error" style="display:none"></div>
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" style="width:260px;" id="signup-username" placeholder="Username" />
+            </div>
+          </div>
+
+          <div class="control-group">  
+            <div class="controls">
+              <input type="password" class="input"  style="width:260px;" id="signup-password" placeholder="Password" />
+              </div>
+            </div>
+        
+
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" style="width:260px;" id="signup-email" placeholder="Email (not needed for login)" />
+            </div>
+            <p><i>A valid email is only needed for password reset<i></p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" id="createaccount-button">Create account</button>
+    <button class="btn btn-success" id="signin-button">Sign in</button>
+  </div>
+</div>
+
+
+<div class="modal" style="display:none;" data-backdrop="static" data-keyboard="false" id="welcomeModal" tabindex="-1" role="dialog" aria-labelledby="welcomeModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <div class="">
+      <div class="login ">
+        <div id="step0">
+          
+              
+          <img src="/static/img/welcomePrivate.jpg"></img>
+
+          <div class="btn-group" style="width:100%;">
+            <center>
+            <button class="btn btn-success btn-large" id="btnShowMe">Sign in / Create account</button>
+          </div>
+          <br>
+          <div class="btn-group" style="width:100%;">
+            <center>
+            <button class="btn btn-large" class="close" data-dismiss="modal" aria-hidden="true">No thanks, I just want to look around</button>
+          </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+</div>
+
+    </script>
+
+
+
+
+
+
+
+{% end %}
+
+
+
+
+
+
+
+
+
+

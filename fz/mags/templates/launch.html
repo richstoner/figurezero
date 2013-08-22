@@ -1,0 +1,263 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+{% end %}
+
+{% block js %}
+  
+  <script type="text/javascript">
+
+      $(function() {
+          $(".content").height(window.innerHeight - 120);
+
+          var video = document.getElementById('video');
+            video.addEventListener('click',function(){
+            video.play();
+          },false);
+      });
+
+      $('#myTab a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+      });
+
+      $(window).resize(function() {
+        $(".content").height(window.innerHeight - 120);
+      });
+
+      
+
+  </script>
+
+{% end %}
+
+{% block content %}
+  
+
+  <a href="/app"><img style="position: absolute; top: 0; left: 0; border: 0;" src="/static/img/appme.png" alt="Get the iOS app"></a>
+
+    <div id="todoapp">
+      <div class="content">
+
+        <div class="span3 hidden-phone">
+          <div id="homeHero" class="pull-right">
+            <h1>FigureZero</h1>
+            <br>
+            <h4 >...is a platform for scientists to <b>annotate</b>, <b>organize</b>, and <b>share</b> zoomable figures.</h4>
+
+            
+              <div class="btn-group pull-right">
+                <br><br>
+                <a href="/library"><button class="btn btn-inverse">Get started  <i class="icon-arrow-right icon-white"></i></button></a>
+                
+              </div>
+            
+          </div>
+        </div>
+        
+        <div class="span8">
+          <div id="homeContent">
+
+              <div class="btn-group pull-right" id="myTab">
+                <a href="#videotab">Welcome</a> |
+                <a href="#home">About</a> |
+
+                <a href="#acknowledge">Team</a> |
+                <a href="#faq">FAQ</a> |
+                <a href="#technical">Technical</a> 
+                
+              </div>
+
+            <div class="clearfix"></div>
+
+
+
+            <div class="tab-content">
+
+
+              <div class="tab-pane active" id="videotab">
+
+                  <br>
+                    <center>
+
+                      <!-- <video class="hidden-phone" id="video" width="96%" style="border:1px solid #000;"> -->
+                        <!-- <source src="http://s3.amazonaws.com/fzero/fz-about.m4v" type="video/mp4" /> -->
+                        <iframe class="hidden-phone" src="http://player.vimeo.com/video/51117434?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="600" height="298" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                      <!-- </video> -->
+
+                      <iframe class="visible-phone" src="http://player.vimeo.com/video/51117434?title=0&amp;byline=0&amp;portrait=0&amp;color=ffffff" width="300" height="149" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    
+                    <br>
+                      <a class="visible-phone" href="/library"><button class="btn btn-inverse">Get started  <i class="icon-arrow-right icon-white"></i></button></a>
+                    <br>
+                    </center>
+                    
+
+                    <div><center><p><small>For best performance, please use Chrome.</small></p></center></div>
+              </div>
+
+
+              <div class="tab-pane" id="home">
+                    <a href="/fz/tZl3bAb9Pc"><img src="/static/img/overview.jpg"/></a>
+                    <p>Figure Zero is an experimental take on the traditional Figure 1. We've used modern technologies to create a new kind of research communication, available as web and iOS applications. The technology is a core component in a larger medical education platform being developed in partnership with the <a href="http://distributedhealth.org">Distributed Health Lab</a> at UCSD.
+                    </p>
+                    <p>A recent push for online and open publication has yielded an opportunity to create rich, interactive presentations of scientific research. Unlike static images found in traditional publications, FigureZero is an interactive zoomable canvas on which authors can map regions of interest, create annotations, and embed citations to share with other researchers. A single FigureZero figure can contain hundreds of annotations, each unique and capable of encapsulating a variety of formats (PubMed ID, D.O.I., YouTube, and Vimeo). </p>
+                    <p>FigureZero was built to fill a need of researchers and educators worldwide. We welcome feedback and community involvement throughout our beta test (Oct. 1 - Dec. 31, 2012). For more information, follow us <a href="https://twitter.com/intent/user?screen_name=figurezero">@figurezero</a> or email us at contact (at) figurezero.com</p>
+                    <p><strong>We hope you find it useful!</strong></p>
+
+                    <br>
+                    <br><br>
+                    <div><center><p><small>For best performance, please use Chrome.<br>© Rich Stoner, 2012</small></p></center></div>
+              </div>
+    
+
+
+            <div class="tab-pane" id="faq">
+                       
+             <br>
+                  <h3>How can I use FigureZero?</h3>
+
+                  <br>
+                  <ul>
+                    <li>  Create a dynamic version of a poster by adding embedded links to pubmed ID, DOI url, and web-based video. </li><br>
+                    <li>  Share your poster easily by emailing a short link to the figure or printing out a QR code for others to scan.</li><br>
+                    <li>  Embed regions of interest, each directly citable, in blogs or wikis.</li><br>
+                    <li>  Search and star figures of interest to show your lab mates after the conference.</li><br>
+                    <li>  Collect statistics about how often your figure and regions of interest are viewed.</li><br>
+                    
+                  </ul>
+  
+                  <h3>What else should I ask about FigureZero?</h3>
+
+                  <br>
+
+                  <ul>
+                    <li>  How much does it cost?<br><br><blockquote>Nothing. During the beta period (until 12/31/20120), FigureZero will be run as an experiment. During this time we'll be collecting valuable feedback to determine the best mechanism to support the service.</blockquote><br></li>
+
+                    <li>  Who owns the content?<br><br><blockquote>During the experimental phase, you retain all rights to any figures that you've uploaded. You are free at any time to unpublish and/or delete a figure. Obviously to make this a real viable means of publication, we will need to introduce means for initial review, indexing, and a guaranteed availability duration. We hope to partner with key publishers to meet academic requirements.</blockquote><br></li>
+
+                    
+                  </ul>
+                
+
+            </div>
+
+            <div class="tab-pane" id="acknowledge">
+              
+
+                  <br>
+  
+                  <h3>Who built FigureZero?</h3>
+
+                  <ul>
+                    <li>  Rich Stoner <a href="https://twitter.com/intent/user?screen_name=rmstoner">@rmstoner</a> - Lead developer and somewhat scattered (UPitt Neuroengineering PhD, UCSD Neurosciences postdoc <a href="http://rich.figurezero.com/rmstoner-oct1_2012.pdf">CV</a>). Trying to reinvent medical education. <br></li>
+                    
+                  </ul>
+                
+                  <h3>Who helped?</h3>
+
+                  <ul>
+                    <li>  Justin Kiggins <a href="https://twitter.com/intent/user?screen_name=neuromusic">@neuromusic</a> - brains / beer / bicycling / computational neuroscience PhD student <br></li>
+
+                    <li>  Dan Knudsen <a href="https://twitter.com/intent/user?screen_name=neurodan">@neurodan</a> - I love brains more than zombies do. (UCSD Neurosciences PhD)<br></li>
+
+                    <li>  Philip Meier <a href="https://twitter.com/intent/user?screen_name=hooPhilip">@hooPhilip</a> - design / UX / video<br></li>
+
+                    <li>  Soren Solari - Opera Solutions (UCSD Neurosciences PhD)<br></li>
+
+                  </ul>
+
+
+                  <h3>Advisors</h3>
+
+
+                  <ul>
+
+
+                    <li>  Stephen Larson <a href="https://twitter.com/intent/user?screen_name=slars0n">@slars0n</a> - entrepreneur/scientist/engineer/nerd -- excited by ai, neuroscience, computers, politics -- oh & having fun as a human being in the real world too ;) (UCSD Neurosciences PhD)<br></li>
+
+                    <li>  Eli Spencer - UCSD School of Medicine, Div. of Infectious Disease (MD PhD Albert Einstein SOM)<br></li>
+                    
+                    <li>  David Matthews <a href="https://twitter.com/intent/user?screen_name=e2pi">@e2pi</a> - computational neuroscientist (UCSD Neurosciences PhD)<br></li>
+
+                    
+                  </ul>
+
+
+                  <h3>Additional thanks...</h3>
+
+                  <ul>
+                    <li>  To the excellent group of hackers & neuroscientists from the INCF & AIBS hackathons for their feedback, criticisms, and technical advice. </li>
+
+                    <li>  To <a href="http://sciple.org/">http://sciple.org/</a> group for their helpful comments and for <a href="http://hacksfn.org">hacksfn.org</a>, a tool to greatly improve SFN abstract search and sharing.</li>
+                    
+                  </ul>
+
+
+            
+
+            </div>
+          
+
+          <div class="tab-pane" id="technical">
+
+            <br>
+            <h3>Technical overview</h3>
+            
+                    <br>
+            
+            <p>FigureZero is built with recent modern web & iOS technologies. How they all work together is a bit of magic and mystery, but as a whole we have a reasonably stable, scalable platform. We have been feature complete since late September, 2012. </p>
+
+            <ul>      
+              <li>Server</li><br>
+              <blockquote>We have a python-happy backend running <a href="http://www.tornadoweb.org/">tornado</a> fronted by <a href="http://nginx.org/">NGINX</a> with <a href="http://supervisord.org/index.html">supervisor</a> managing. It's a loosely coupled architecture with <a href="http://aws.amazon.com/sqs/">SQS</a> between, storage on <a href="http://aws.amazon.com/s3/">S3</a>, and hopefully taking advantage of the recent <a href="http://aws.amazon.com/about-aws/whats-new/2012/08/31/amazon-s3-announces-cross-origin-resource-sharing-CORS-support/">CORS addition</a> for serving tiles. For user management and all database work, we use <a href="https://parse.com/">parse.com</a>. It’s incredible and we’re not getting paid to say that. It has made life easy for cross-platform web + mobile application development.</blockquote>
+            </ul>
+
+            <ul>       
+              <li>Front end</li><br>
+              <blockquote>On the mobile side, we’ve built a universal app with <a href="http://cocoapods.org/">cocoapods.org</a> for managing packages. We rely heavily on <a href="https://parse.com/">parse.com</a> for user accounts and session management. User interface consists of SVSegmentedControl, UIGlossyButton, EGO, TSPopover and a bunch of custom code. ZXing for qrcode scanning. AFNetworking for anything parse.com doesn’t handle and <a href="https://testflightapp.com/">Testflightapp</a> for beta testing and Google for analytics. </blockquote>
+            
+            </ul>
+
+
+            <ul>       
+              <li>Web app</li><br>
+              <blockquote>The web app is a <a href="http://backbonejs.org/">backbone.js</a> app with a few <a href="http://jquery.com/">jquery</a> elements running on a <a href="https://parse.com/">parse.com</a> base with a heavy reliance on <a href="http://jasny.github.com/bootstrap/">bootstrap + jasny</a>. It was primarily an experiment in learning javascript MVC but in the end resulting in a stable, responsive, and somewhat attractive web application. Zoomable image viewing is provided by <a href="http://leaflet.cloudmade.com/">leaflet</a>. Annotations are stored in <a href="http://www.geojson.org/">geojson</a> and arbitrarily limited to markers and rectangles. Future versions could make use of multiline polygons and/or circles.</blockquote>
+            
+            </ul>
+
+            <p>More time was spent selecting the components than actually piecing them togther them. Send us an email (contact (at) figurezero.com) if you’re interested in learning more about how this all comes together.</p>
+
+            <p><i>If all of that sounds like gibberish, imagine how neuroscience terminology sounds to the startup crowd in Silicon Valley. </i></p>
+
+          </div>
+
+
+
+          </div>
+
+          <div class="clearfix"></div>
+          
+
+        </div>
+
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+
+
+{% end %}
+
+
+
+
+
+
+
+
+
+

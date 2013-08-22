@@ -1,0 +1,294 @@
+
+{% extends 'layouts/base-navbar.html' %}
+
+{% block css %}
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.css" />
+     <!--[if lte IE 8]>
+         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4/leaflet.ie.css" />
+     <![endif]-->
+
+{% end %}
+
+{% block js %}
+
+    <script src="{{ static_url( 'js/leaflet.js') }}"></script>
+
+    <script src="/static/prod/roi.min.js"></script>
+
+{% end %}
+
+{% block content %}
+    
+
+    
+    <span style="display:none;" id="parseID">{{ messages }}</span>
+
+    <div id="todoapp">
+      <div class="content">
+
+      </div>
+    </div>
+
+      <!-- Templates -->
+
+    <script type="text/template" id="login-template">
+        <div class="span4">
+          <div id="homeHero" class="pull-right">
+            <h1>FigureZero <small>web</small></h1>
+            <br>
+            <h4>Before continuing, please sign in or create a new account...</h4>
+            
+          </div>
+
+          <div id="homeHero" class="visible-phone">
+            <h1>iPhone or iPad user?</h1>
+            <br>
+            <h4>Download the free app...</h4>
+            
+          </div>
+
+        </div>
+
+        <div class="span6 offset1">
+          <div class="login publicContent">
+            <form class="login-form">
+              <br>
+              <h4>Log In</h4>
+              <div class="error" style="display:none"></div>
+              <div class="control-group">
+                <div class="controls">
+                <input type="text" class="input" id="login-username" placeholder="Username" />
+                </div>
+              </div>
+
+              <div class="control-group">
+                <div class="controls">
+                  <input type="password" class="input" id="login-password" placeholder="Password" />
+                </div>
+              </div>
+            <div class="form-actions">
+              <button class="btn btn-inverse">Log In</button>
+            </div>
+            <br>
+            </form>
+
+          </div>
+        
+        <div class="login publicContent">
+        <form class="signup-form ">
+          <br>
+          <h4 >Create an account</h4>
+          <div class="error" style="display:none"></div>
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" id="signup-username" placeholder="Username" />
+            </div>
+          </div>
+
+          <div class="error" style="display:none"></div>
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" class="input" id="signup-email" placeholder="Email" />
+            </div>
+          </div>
+
+          
+          <div class="control-group">  
+            <div class="controls">
+              <input type="password" class="input" id="signup-password" placeholder="Create a Password" />
+              </div>
+            </div>
+        <div class="form-actions">
+          <button class="btn btn-inverse">Sign Up</button>
+        </div>
+        <br>
+      
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+    </script>
+
+
+
+    <!-- Templates -->
+
+ <script type="text/template" id="view-template">
+
+
+          <div class="customView" onmouseover="highlightMapGlobal(<%= index %>);" onmouseout="clearHighLightsGlobal();" onclick="zoomToGlobal(<%= index %>);">
+            
+            <div class="customViewClose close pull-right" onclick="deleteViewAtIndexGlobal(<%= index %>);"><i class="icon-trash"></i></div>
+
+              <img id="viewThumbnail" src="<%= properties.thumburl %> "/ >
+
+              <p class="customViewTitle"> <span class="heavier"><%= properties.title %></span> <a href="#"><i class="icon-arrow-up" onclick="moveItemUpGlobal(<%= index %>);"></i></a> <a href="#"><i class="icon-arrow-down" onclick="moveItemDownGlobal(<%= index %>);"></i></a><br><%= properties.description %></p>
+            
+            <div class="clearfix"></div>
+
+          </div>
+
+    </script>
+
+
+
+
+
+    <script type="text/template" id="manage-todos-template">
+
+<div class="navbar navbar-inverse headerBar">
+    <div class="navbar-inner">
+      <div class="container">
+     
+        
+
+        <a class="brand hidden-phone" href="/">FigureZero</a>
+
+        <% if(Parse.User.current()){ %>
+          <div class="btn-group pull-right">
+            <span id="starSpan"></span>
+          </div>
+                    
+
+          <span id="publishButton"></span>
+
+        <% } %>
+
+        <ul class="nav pull-right">
+          
+          <li><a href="/fz/{{ messages }}">Back to main figure <i class="icon-chevron-right icon-white"></i></a></li>
+          
+        </ul>
+
+
+
+        <% if(Parse.User.current()){ %>
+
+           <ul class="nav">
+              
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i>  <%= Parse.User.current().get('username') %><i class="caret icon-white"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a id="logoutButton"><i class="icon-off"></i>  Sign out</a></li>
+                </ul>
+              </li>
+              <li><a href="/library"><i class="icon-home icon-white"></i>  <span class="hidden-phone">Library</span></a></li>
+            </ul>         
+                  
+        <% } else { %>
+
+           <ul class="nav">
+              <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" id="dropDownButton" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i> Sign in
+                </a>
+                <ul class="dropdown-menu" id="dropDownLogin">
+                
+                    <input type="text" id="login-username" class="input-medium" placeholder="Username">
+                    <br>
+                    <input type="password" id="login-password" class="input-medium" placeholder="Password">
+                    <br>
+                    <button class="btn btn-mini btn-primary" id="signinButton">Sign in</button>
+                
+                </ul>
+              </li>
+            </ul> 
+
+
+        <% } %>
+
+                <ul class="nav">
+          
+          
+      
+                </ul>
+        
+        
+ 
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+
+
+
+        <div class="row-fluid">
+          <div id="leftblock" class='span8'>
+                          
+              <div id="map"></div>
+
+          </div>
+
+          <div id="rightblock" class='span4'>
+            
+          <div id="addReferenceRegion">
+
+            <div id="activityView"></div>
+            
+            <h4 class="rowHeader">How to define a region of interest</h4>
+            <br>
+            <ol>
+              <li>Tap on draw icon: <img src="/static/css/images/draw-rectangle.png"/></li>
+              <li>Add short title and description</li>
+              
+            </ol>
+
+            
+              <div id="saveViewError" class="alert alert-error error" style="display:none"></div>
+              <div class="control-group">
+                
+                <div class="controls">
+
+                  <input type="text" class="input input-response" id="view-title" placeholder="3. Provide a short title"/>
+                </div>
+              </div>
+              <div class="control-group">
+                
+                <div class="controls">
+                  <textarea class="input-xlarge input-block input-response" id="view-description" rows="3" placeholder="4. Add a short description (2-3 lines)"></textarea>
+                </div>
+              </div>
+              
+            </div>
+  
+
+            <div class="btn-group pull-right" id="saveButtonGroup">
+              
+              <button class="btn btn-small btn-primary" id="add-view-button">Add region</button>
+              <button class="btn btn-small btn-success disabled" id="save-model-button">Save changes</button>
+
+
+              </div>
+
+            <div class="clearfix"></div>
+
+            <div id="viewContainer">
+
+            </div>
+
+            
+
+
+            
+          </div>
+        </div>
+    </script>
+
+{% end %}
+
+
+
+
+
+
+
+
+
